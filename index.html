@@ -1,0 +1,2207 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>カタチパズル</title>
+<meta name="description" content="最初から置かれた「点つきブロック」を、全部消せばクリア。ブラウザで遊べる落ちものパズル。メイン15ステージ、少ない手数を狙うパズル、ステージとパズルを作ってコードで共有できるエディタ付き。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="カタチパズル">
+<meta property="og:title" content="カタチパズル｜点つきブロックを全部消す落ちものパズル">
+<meta property="og:description" content="最初から置かれた「点つきブロック」を、全部消せばクリア。ブラウザで遊べる落ちものパズル。メイン15ステージ、少ない手数を狙うパズル、ステージとパズルを作ってコードで共有できるエディタ付き。">
+<meta property="og:url" content="https://kuro516.github.io/cat16/">
+<meta property="og:image" content="https://kuro516.github.io/cat16/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="カタチパズル｜点つきブロックを全部消す落ちものパズル">
+<meta name="twitter:description" content="最初から置かれた「点つきブロック」を、全部消せばクリア。ブラウザで遊べる落ちものパズル。メイン15ステージ、少ない手数を狙うパズル、ステージとパズルを作ってコードで共有できるエディタ付き。">
+<meta name="twitter:image" content="https://kuro516.github.io/cat16/ogp.png">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0wLjUgLTEgOCAxMCI+PHJlY3QgeD0iLTAuNSIgeT0iLTEiIHdpZHRoPSI4IiBoZWlnaHQ9IjEwIiByeD0iMSIgZmlsbD0iIzBjMGQxMyIvPjxyZWN0IHg9IjIiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSI2IiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iMiIgeT0iMSIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjMiIHk9IjEiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSI0IiB5PSIxIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iNSIgeT0iMSIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjYiIHk9IjEiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iNCIgeT0iMiIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjYiIHk9IjIiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSIyIiB5PSIzIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iMyIgeT0iMyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjQiIHk9IjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSI1IiB5PSIzIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iNiIgeT0iMyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjAiIHk9IjQiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSIzIiB5PSI0IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZTcyNzFlIi8+PHJlY3QgeD0iNCIgeT0iNCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2U3MjcxZSIvPjxyZWN0IHg9IjUiIHk9IjQiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNlNzI3MWUiLz48cmVjdCB4PSIwIiB5PSI1IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iMSIgeT0iNSIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjIiIHk9IjUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSIzIiB5PSI1IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iNCIgeT0iNSIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZjAwMCIvPjxyZWN0IHg9IjUiIHk9IjUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSI2IiB5PSI1IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iMSIgeT0iNiIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjIiIHk9IjYiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSIzIiB5PSI2IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iNCIgeT0iNiIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjUiIHk9IjYiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSI2IiB5PSI2IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iMSIgeT0iNyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjMiIHk9IjciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSI1IiB5PSI3IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PC9zdmc+">
+<style>[hidden]{display:none!important}html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap">
+<style>
+  /* Layout: menu = masthead + stage cards with true thumbnails of each starting layout.
+     Play = board with a narrow side column (hold / next / stats), touch pad underneath on phones.
+     Palette comes from the cat sprite: ink black, cream white, collar red, bell yellow. */
+  :root {
+    --bg: #0c0d13;
+    --panel: #151722;
+    --panel2: #1d2030;
+    --line: #2d3250;
+    --fg: #f4eee1;
+    --muted: #9ca2ba;
+    --accent: #d9261c;
+    --accent-line: #f0574b;
+    --bell: #fff000;
+    --font-display: 'DotGothic16', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Meiryo', monospace;
+    --font-body: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Meiryo', system-ui, sans-serif;
+    color-scheme: dark;
+  }
+  :root[data-skin="midnight"] { --bg: #090e1d; --panel: #111a31; --panel2: #1a2542; --line: #2e3d6b; --fg: #e8eefc; --muted: #93a3d1; --accent: #3b6fe0; --accent-line: #7ea2ff; }
+  :root[data-skin="forest"] { --bg: #0a120e; --panel: #111f18; --panel2: #182b22; --line: #2b4b3c; --fg: #eef3e4; --muted: #9ab4a4; --accent: #2a9d63; --accent-line: #62d99a; }
+  :root[data-skin="paper"] { --bg: #f3efe4; --panel: #fffdf6; --panel2: #ebe5d3; --line: #cdc4aa; --fg: #1d1b16; --muted: #6b6655; --accent: #d9261c; --accent-line: #b81d14; --bell: #b07a00; color-scheme: light; }
+  :root[data-skin="paper"] #logo { background: #0c0d13; padding: 10px; border-radius: 6px; }
+  * { box-sizing: border-box; }
+  .setBox { display: grid; gap: 12px; padding: 16px; margin-bottom: 14px; background: var(--panel); border: 2px solid var(--line); border-radius: 4px; }
+  .setBox h3 { margin: 0; font-family: var(--font-display); font-size: 18px; }
+  .setBox .sub { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+  .setRow { display: grid; grid-template-columns: 5.5em 1fr 3em; gap: 10px; align-items: center; }
+  .setRow output { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; }
+  .setRow input[type=range] { width: 100%; min-width: 0; accent-color: var(--accent); }
+  .opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+  .opt { display: grid; gap: 6px; justify-items: start; text-align: left; padding: 10px 12px; background: var(--panel2); color: var(--fg); border: 2px solid var(--line); border-radius: 4px; }
+  .opt[aria-pressed="true"] { border-color: var(--accent-line); box-shadow: inset 0 0 0 1px var(--accent-line); }
+  .opt .on { font-size: 14px; }
+  .opt .sw { display: flex; gap: 3px; }
+  .opt .sw i { width: 14px; height: 14px; border-radius: 2px; border: 1px solid rgba(128,128,128,.45); }
+  .setBox textarea { width: 100%; min-height: 96px; padding: 8px 10px; background: var(--panel2); color: var(--fg); border: 2px solid var(--line); border-radius: 4px; font: 12px/1.5 ui-monospace, Menlo, Consolas, monospace; resize: vertical; }
+  .opt .sub { font-size: 12px; line-height: 1.5; }
+  .setPrev { display: block; max-width: 100%; border: 1px solid var(--line); background: #0a0b11; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font: 400 15px/1.65 var(--font-body);
+    padding-block: 20px 36px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    -webkit-tap-highlight-color: transparent;
+  }
+  h1, h2, p, dl, dd, ul { margin: 0; }
+  ul { padding: 0; list-style: none; }
+  canvas { image-rendering: pixelated; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--bell); outline-offset: 2px; }
+
+  .btn {
+    font-family: var(--font-display);
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 12px 18px;
+    background: var(--panel2);
+    color: var(--fg);
+    border: 2px solid var(--line);
+    border-radius: 4px;
+    box-shadow: 0 3px 0 #05060a;
+    touch-action: manipulation;
+  }
+  .btn:hover { border-color: var(--muted); }
+  .btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #05060a; }
+  .btn.primary { background: var(--accent); border-color: var(--accent-line); color: #fff6ea; }
+  .btn.sm { font-size: 13px; padding: 8px 12px; }
+
+  /* ---------- menu ---------- */
+  #menu { max-width: 960px; margin-inline: auto; display: grid; gap: 28px; }
+  #logo { flex: none; display: block; }
+  .lede { max-width: 38em; color: var(--muted); }
+  .lede b { color: var(--fg); font-weight: 700; }
+  .stages {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
+    gap: 12px;
+  }
+  .stages li { min-width: 0; display: flex; }
+  .stage {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+    text-align: left;
+    padding: 12px;
+    background: var(--panel);
+    border: 2px solid var(--line);
+    border-radius: 4px;
+    touch-action: manipulation;
+  }
+  .stage:hover { border-color: var(--fg); }
+  .thumb { display: block; border: 1px solid var(--line); background: #0a0b11; }
+  .stage .info { display: grid; gap: 4px; min-width: 0; }
+  .stage .name { font-family: var(--font-display); font-size: 20px; line-height: 1.2; }
+  .stage .rule { color: var(--muted); font-size: 13px; line-height: 1.55; }
+  .stage .meta { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; margin-top: 4px; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .stage .done { color: var(--fg); border: 1px solid var(--accent-line); padding: 0 6px; border-radius: 2px; }
+  .howto { display: grid; gap: 10px; padding: 16px; background: var(--panel); border: 2px solid var(--line); border-radius: 4px; }
+  .howto h2 { font-family: var(--font-display); font-weight: 400; font-size: 18px; }
+  .keys { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: 6px 18px; font-size: 13px; }
+  .keys div { display: flex; gap: 8px; align-items: baseline; min-width: 0; }
+  .keys dt { flex: none; }
+  .keys dd { color: var(--muted); }
+  kbd {
+    font-family: var(--font-display);
+    font-size: 12px;
+    padding: 1px 6px;
+    background: var(--panel2);
+    border: 1px solid var(--line);
+    border-bottom-width: 2px;
+    border-radius: 3px;
+  }
+
+  .view { display: grid; gap: 22px; align-content: start; }
+  .viewbar { display: flex; align-items: center; gap: 14px; }
+  .viewbar h2 { font-family: var(--font-display); font-weight: 400; font-size: 22px; line-height: 1.2; }
+  .howto h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 18px; }
+  .howto .note { color: var(--muted); font-size: 13px; margin: 0; }
+
+  /* top page */
+  .top { display: grid; justify-items: center; gap: 16px; padding-top: clamp(0px, 4vh, 48px); text-align: center; }
+  .top h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(38px, 11vw, 60px); line-height: 1.1; letter-spacing: .05em; }
+  .strip { display: flex; gap: 6px; }
+  .strip i { display: block; width: 14px; height: 14px; }
+  .tag { color: var(--muted); text-wrap: balance; }
+  .modeCards { display: grid; gap: 10px; width: 100%; max-width: 440px; margin-top: 6px; }
+  .modeCards li { min-width: 0; }
+  .modeCard {
+    width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "t p" "s p";
+    column-gap: 14px; row-gap: 2px; align-items: center; text-align: left; padding: 14px 16px;
+    background: var(--panel); border: 2px solid var(--line); border-radius: 4px; box-shadow: 0 3px 0 #05060a; touch-action: manipulation;
+  }
+  .modeCard:hover { border-color: var(--fg); }
+  .modeCard:active { transform: translateY(2px); box-shadow: 0 1px 0 #05060a; }
+  .modeCard.first { border-color: var(--accent-line); }
+  .modeCard .mt { grid-area: t; font-family: var(--font-display); font-size: 22px; line-height: 1.2; }
+  .modeCard .ms { grid-area: s; font-size: 12px; color: var(--muted); }
+  .modeCard .mp { grid-area: p; font-size: 12px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+  .topRow { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 6px; }
+  .modeDesc { color: var(--muted); margin-bottom: 14px; }
+  .extraBar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-bottom: 14px; }
+  .progress { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .progress b { color: var(--fg); font-family: var(--font-display); font-weight: 400; font-size: 17px; }
+  .letters { display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); gap: 8px; }
+  .letters li { min-width: 0; display: flex; }
+  .letter {
+    width: 100%; display: grid; justify-items: center; gap: 6px; padding: 10px 6px;
+    background: var(--panel); border: 2px solid var(--line); border-radius: 4px; touch-action: manipulation;
+  }
+  .letter:hover { border-color: var(--fg); }
+  .letter.done { border-color: var(--accent-line); }
+  .letter .ch { font-family: var(--font-display); font-size: 22px; line-height: 1; }
+  .letter .st { font-size: 11px; color: var(--muted); line-height: 1; }
+
+  /* ---------- play ---------- */
+  #play { max-width: 720px; margin-inline: auto; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+  .topbar .title { flex: 1; min-width: 0; text-align: center; font-family: var(--font-display); font-size: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .remain { display: grid; gap: 6px; margin-bottom: 12px; }
+  .remain .row { display: flex; align-items: baseline; gap: 10px; }
+  .remain .lbl2 { font-family: var(--font-display); font-size: 14px; color: var(--muted); }
+  .remain .num { font-family: var(--font-display); font-size: 34px; line-height: 1; font-variant-numeric: tabular-nums; }
+  .remain .of { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .bar { height: 8px; background: var(--panel2); border: 1px solid var(--line); }
+  .bar i { display: block; height: 100%; width: 0; background: var(--accent); }
+  .stage-row { display: flex; gap: 12px; justify-content: center; align-items: flex-start; }
+  .boardwrap { position: relative; flex: none; border: 2px solid var(--line); background: #0a0b11; }
+  #board { display: block; }
+  .side { flex: none; display: grid; gap: 12px; align-content: start; }
+  .lbl { font-family: var(--font-display); font-size: 12px; letter-spacing: .08em; color: var(--muted); margin-bottom: 4px; }
+  .mini { display: block; box-sizing: content-box; background: var(--panel); border: 1px solid var(--line); }
+  .nexts { display: grid; gap: 6px; }
+  .stat { font-size: 11px; color: var(--muted); line-height: 1.3; }
+  .stat b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 17px; color: var(--fg); font-variant-numeric: tabular-nums; }
+  .stats { display: grid; gap: 8px; }
+
+  .overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 10px; background: rgba(8, 9, 14, .66); }
+  .ocard { width: 100%; max-width: 300px; display: grid; gap: 10px; padding: 16px; text-align: center; background: var(--panel); border: 2px solid var(--line); }
+  .ocard h2 { font-family: var(--font-display); font-weight: 400; font-size: 22px; line-height: 1.3; }
+  .ocard p { font-size: 13px; color: var(--muted); }
+  .ocard .timebig { font-family: var(--font-display); font-size: 36px; line-height: 1.1; color: var(--fg); font-variant-numeric: tabular-nums; }
+  .ocard .newbest { color: var(--bell); }
+  .ocard .btns { display: grid; gap: 8px; margin-top: 4px; }
+  .ocard .btn { padding: 10px 12px; font-size: 15px; }
+  .results { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; font-size: 13px; text-align: left; font-variant-numeric: tabular-nums; }
+  .results dt { color: var(--muted); }
+  .results dd { text-align: right; }
+
+  .edwrap { display: grid; gap: 12px; justify-items: center; }
+  .pedkeys { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+  .pedkeys .pk { width: 40px; height: 40px; padding: 0; color: #0c0d13; font-family: var(--font-display); font-size: 16px; border: 2px solid rgba(0,0,0,.4); border-radius: 4px; }
+  .pedkeys .pk.fn { width: auto; padding: 0 12px; background: var(--panel2); color: var(--fg); border-color: var(--line); font-size: 13px; font-family: var(--font-body); }
+  .pedBlock .sub { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; text-align: center; }
+  .pedH { margin: 0; font-family: var(--font-display); font-size: 18px; }
+  .pedSeqView { min-height: 26px; justify-content: center; flex-wrap: wrap; }
+  .pedBlock { display: grid; gap: 10px; width: 100%; max-width: 440px; justify-items: center; }
+  .pedBlock .edcode { text-align: center; }
+  #pedCanvas { touch-action: none; border: 2px solid var(--line); background: #0a0b11; cursor: crosshair; max-width: 100%; }
+  #edCanvas { touch-action: none; border: 2px solid var(--line); background: #0a0b11; cursor: crosshair; max-width: 100%; }
+  .edinfo { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; color: var(--muted); font-size: 13px; min-height: 1.6em; }
+  #edMsg { color: var(--bell); }
+  .edrow { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .edcodeBox { display: grid; gap: 8px; width: 100%; max-width: 440px; }
+  .colBox { display: grid; gap: 10px; width: 100%; max-width: 440px; margin-top: 6px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .colBox h3 { margin: 0; font-family: var(--font-display); font-size: 18px; }
+  .colBox .sub { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+  .colList { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .colItem { display: grid; gap: 8px; padding: 10px 12px; background: var(--panel); border: 2px solid var(--line); border-radius: 4px; }
+  .colItem .cn { font-family: var(--font-display); font-size: 17px; line-height: 1.3; overflow-wrap: anywhere; }
+  .colItem .cm { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .colItem .edrow { justify-content: flex-start; gap: 6px; }
+  .colItem.cur { border-color: var(--accent-line); }
+  .colEmpty { color: var(--muted); font-size: 13px; padding: 8px 0; }
+  .colBox details { border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; }
+  .colBox summary { cursor: pointer; font-size: 13px; color: var(--muted); }
+  .colBox textarea { width: 100%; min-height: 90px; margin: 8px 0; box-sizing: border-box; padding: 8px 10px; background: var(--panel2); color: var(--fg); border: 2px solid var(--line); border-radius: 4px; font: 13px/1.5 ui-monospace, Menlo, Consolas, monospace; resize: vertical; }
+  .edcode { width: 100%; min-width: 0; padding: 10px 12px; background: var(--panel2); color: var(--fg); border: 2px solid var(--line); border-radius: 4px; font: 14px/1.4 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .04em; }
+  .seqrow { display: none; align-items: center; justify-content: space-between; gap: 8px; min-height: 30px; }
+  #play.puz .seqrow { display: flex; }
+  .seqbar { display: flex; align-items: center; gap: 4px; min-height: 22px; min-width: 0; }
+  .hintmsg { position: absolute; left: 6px; right: 6px; top: 22%; z-index: 3; padding: 8px 10px; background: rgba(12,13,19,.94); border: 1px solid var(--bell); color: var(--fg); font-size: 13px; line-height: 1.55; pointer-events: none; }
+  .seqbar i { font-style: normal; font-family: var(--font-display); font-size: 13px; line-height: 20px; width: 20px; text-align: center; color: #0c0d13; }
+  .seqbar i.done { opacity: .22; }
+  .seqbar i.cur { outline: 2px solid var(--bell); outline-offset: 1px; }
+  .stars { color: var(--bell); letter-spacing: .08em; }
+  .stars .off { color: var(--line); }
+  .pad { display: none; }
+  .touch .pad { display: flex; justify-content: space-between; gap: 12px; margin-top: 14px; }
+  .pg { display: grid; grid-template-columns: 56px 56px; gap: 8px; }
+  .pb {
+    height: 56px; display: grid; place-items: center;
+    font-family: var(--font-display); font-size: 14px;
+    background: var(--panel2); color: var(--fg);
+    border: 2px solid var(--line); border-radius: 4px; box-shadow: 0 3px 0 #05060a;
+    touch-action: none; user-select: none; -webkit-user-select: none;
+  }
+  .pb.on, .pb:active { background: var(--line); transform: translateY(2px); box-shadow: 0 1px 0 #05060a; }
+  .pb.wide { grid-column: 1 / 3; }
+  .pb svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: square; stroke-linejoin: miter; }
+  .pb svg.flip { transform: scaleX(-1); }
+  .hint { margin-top: 12px; font-size: 12px; color: var(--muted); text-align: center; }
+  .touch .hint { display: none; }
+
+  /* phone play: the page must not scroll or zoom while playing, and everything fits the screen */
+  html.playing, html.playing body { overflow: hidden; overscroll-behavior: none; }
+  html.playing body { padding-block: 6px; }
+  #play.touch, #play.touch * { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+  #play.touch .stage-row, #play.touch .boardwrap { touch-action: none; }
+  #play.touch .topbar { margin-bottom: 6px; }
+  #play.touch .remain { margin-bottom: 8px; gap: 4px; }
+  #play.touch .remain .num { font-size: 26px; }
+  #play.touch .pad { margin-top: 10px; }
+  #rotateNote { display: none; text-align: center; padding: 28px 16px; color: var(--muted); }
+  #play.land > *:not(#rotateNote):not(.topbar) { display: none !important; }
+  #play.land .topbar { margin-bottom: 0; }
+  #play.land > #rotateNote { display: block; }
+  @media (max-height: 640px) {
+    .pb { height: 46px; }
+    .pg { grid-template-columns: 50px 50px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { .btn:active, .pb:active { transform: none; } }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <section id="menu" aria-label="メニュー">
+    <div id="vTop" class="view">
+      <div class="top">
+        <canvas id="logo" aria-hidden="true"></canvas>
+        <h1>カタチパズル</h1>
+        <div class="strip" id="strip" aria-hidden="true"></div>
+        <p class="tag">最初から置かれたブロックを、全部消せばクリア。</p>
+        <ul class="modeCards">
+          <li><button class="modeCard first" type="button" data-mode="main"><span class="mt">メインモード</span><span class="ms">形を崩していく15ステージ</span><span class="mp" id="mainProg"></span></button></li>
+          <li><button class="modeCard" type="button" data-mode="puzzle"><span class="mt">パズル</span><span class="ms">決まったミノで、少ない手数を狙う。入門5問＋12問</span><span class="mp" id="puzProg"></span></button></li>
+          <li><button class="modeCard" type="button" data-mode="normal"><span class="mt">ノーマル</span><span class="ms">初期配置のないふつうの落ちものパズル</span><span class="mp" id="normalProg"></span></button></li>
+          <li><button class="modeCard" type="button" data-mode="extra"><span class="mt">エクストラ</span><span class="ms">AからZまでの26ステージ</span><span class="mp" id="extraProg"></span></button></li>
+          <li><button class="modeCard" type="button" data-mode="editor"><span class="mt">エディタ</span><span class="ms">自分でステージを作って遊ぶ</span><span class="mp"></span></button></li>
+          <li><button class="modeCard" type="button" data-mode="pcode"><span class="mt">パズルエディタ</span><span class="ms">自分でパズルを作って、コードで出題する</span><span class="mp"></span></button></li>
+        </ul>
+        <div class="topRow">
+          <button class="btn sm" type="button" id="goHow">あそびかた</button>
+          <button class="btn sm" type="button" id="goSet">せってい</button>
+          <button class="btn sm snd" type="button" id="sndMenu" aria-label="効果音"></button>
+        </div>
+      </div>
+    </div>
+
+    <div id="vMode" class="view" hidden>
+      <div class="viewbar"><button class="btn sm" type="button" data-nav="top">‹ トップ</button><h2 id="modeTitle"></h2></div>
+      <div id="paneMain">
+        <p class="modeDesc">パズルのギミックや図形としての面白さを味わう、王道の15ステージです。上から順番に攻略します。クリアすると次のステージが現れます。</p>
+        <ul class="stages" id="stageList"></ul>
+      </div>
+      <div id="paneNormal" hidden>
+        <p class="modeDesc">初期配置のない、ふつうの落ちものパズルです。ブロックを積んで消して、ゲームオーバーまで続けます。高いスコアを狙います。</p>
+        <div class="extraBar">
+          <button class="btn primary" type="button" id="goNormal">スタート</button>
+          <span class="progress" id="normalBest">まだ記録がありません</span>
+        </div>
+      </div>
+      <div id="panePuzzle" hidden>
+        <p class="modeDesc">落ちてくるミノの順番と数が決まっています。その中で、最初のブロックを全部消してください。最初の「入門」5問でルールに慣れてから、本編に進めます。使うミノが少ないほど星が増えます（★1〜3）。操作はほかのモードと同じです。「戻す」ボタン（Uキー）で一手ずつ戻せます。「ヒント」ボタン（Hキー）を押すと、次に置く場所が光って、操作の回数も表示されます。メインモードと同じく、クリアすると次のパズルが現れます。</p>
+        <ul class="stages" id="puzList"></ul>
+      </div>
+      <div id="paneEditor" hidden>
+        <p class="modeDesc">マスをタップ（なぞってもOK）して、最初に置くブロックを描きます。「あそぶ」で、実際のゲームと同じ操作で試せます。下のコードをコピーすると、ほかの人にステージを渡せます。</p>
+        <div class="edwrap">
+          <canvas id="edCanvas" aria-label="ステージエディタの盤面"></canvas>
+          <div class="edinfo"><span id="edCount">ブロック 0 個</span><span id="edMsg" role="status"></span></div>
+          <div class="edrow">
+            <button class="btn primary" type="button" id="edPlay">あそぶ</button>
+            <button class="btn" type="button" id="edClear">全部消す</button>
+          </div>
+          <div class="edcodeBox">
+            <label class="lbl2" for="edCode">ステージのコード</label>
+            <input id="edCode" class="edcode" type="text" spellcheck="false" autocomplete="off" autocapitalize="characters" placeholder="ここにコードを貼り付けて「読み込む」">
+            <div class="edrow">
+              <button class="btn sm" type="button" id="edCopy">コードをコピー</button>
+              <button class="btn sm" type="button" id="edLoad">読み込む</button>
+            </div>
+          </div>
+          <section class="colBox" aria-label="ステージコレクション">
+            <h3>ステージコレクション</h3>
+            <p class="sub">いま描いているステージに名前を付けて保存できます（最大30個、この端末のブラウザに保存）。</p>
+            <input id="colName" class="edcode" type="text" maxlength="20" autocomplete="off" placeholder="ステージの名前（空のままでもOK）">
+            <div class="edrow">
+              <button class="btn sm primary" type="button" id="colSaveNew">新しく保存</button>
+              <button class="btn sm" type="button" id="colSaveOver" hidden>上書き保存</button>
+            </div>
+            <span id="colMsg" class="edinfo" role="status"></span>
+            <ul class="colList" id="colList"></ul>
+            <details>
+              <summary>まとめてバックアップ・取り込み</summary>
+              <p class="sub">「まとめてコピー」で全ステージを1つの文章にできます。別の端末では、この欄に貼り付けて「まとめて取り込む」。友だちのコードも、1行ずつ「名前 コード」の形で貼れば取り込めます。</p>
+              <textarea id="colBulk" spellcheck="false" placeholder="例）わたしの家 K12R-2RFY-7W3R-1G（1行に1ステージ）"></textarea>
+              <div class="edrow">
+                <button class="btn sm" type="button" id="colExport">まとめてコピー</button>
+                <button class="btn sm" type="button" id="colImport">まとめて取り込む</button>
+              </div>
+            </details>
+          </section>
+        </div>
+      </div>
+      <div id="panePEd" hidden>
+        <p class="modeDesc">盤面とミノの順番を決めて、自分でパズルを出題できます。「あそんで確かめる」でクリアできると、そのときの手順がコードに入ります。ほかの人のコードを貼れば、パズルとして遊べます。</p>
+        <div class="edwrap">
+          <canvas id="pedCanvas" aria-label="パズルエディタの盤面"></canvas>
+          <div class="edinfo"><span id="pedCount">ブロック 0 個</span><span id="pedMsg" role="status"></span></div>
+          <div class="pedBlock">
+            <label class="lbl2" for="pedSeq">ミノの順番（最大24個）</label>
+            <input id="pedSeq" class="edcode" type="text" spellcheck="false" autocomplete="off" autocapitalize="characters" placeholder="例：TJIOL（I J L O S T Z）">
+            <div class="seqbar pedSeqView" id="pedSeqView"></div>
+            <div class="pedkeys" id="pedKeys"></div>
+            <div class="edrow">
+              <button class="btn primary" type="button" id="pedPlay">あそんで確かめる</button>
+              <button class="btn" type="button" id="pedClear">全部消す</button>
+            </div>
+          </div>
+          <div class="pedBlock" id="pedResult" hidden>
+            <h3 class="pedH">クリアできました</h3>
+            <p class="sub" id="pedResultInfo"></p>
+            <input id="pedCode" class="edcode" type="text" readonly spellcheck="false" aria-label="パズルのコード">
+            <input id="pedName" class="edcode" type="text" maxlength="20" autocomplete="off" placeholder="パズルの名前（空のままでもOK）">
+            <div class="edrow">
+              <button class="btn sm primary" type="button" id="pedCopy">コードをコピー</button>
+              <button class="btn sm" type="button" id="pedSave">コレクションに保存</button>
+            </div>
+          </div>
+          <section class="colBox" aria-label="パズルを受け取る">
+            <h3>コードを受け取って遊ぶ</h3>
+            <p class="sub">友だちのパズルのコードを貼って、「あそぶ」を押します。ヒント・戻す・星は、パズルモードと同じです。</p>
+            <input id="pcIn" class="edcode" type="text" spellcheck="false" autocomplete="off" autocapitalize="characters" placeholder="ここにパズルのコード（P1…）を貼り付け">
+            <input id="pcName" class="edcode" type="text" maxlength="20" autocomplete="off" placeholder="追加するときの名前（空のままでもOK）">
+            <div class="edrow">
+              <button class="btn sm primary" type="button" id="pcPlay">あそぶ</button>
+              <button class="btn sm" type="button" id="pcAdd">コレクションに追加</button>
+            </div>
+            <span id="pcMsg" class="edinfo" role="status"></span>
+          </section>
+          <section class="colBox" aria-label="パズルコレクション">
+            <h3>パズルコレクション</h3>
+            <p class="sub">保存したパズルと、受け取ったパズルです（最大30個、この端末のブラウザに保存）。まとめての控えは、トップの「せってい」の「バックアップ」から取れます。</p>
+            <ul class="colList" id="pcList"></ul>
+          </section>
+        </div>
+      </div>
+      <div id="paneExtra" hidden>
+        <p class="modeDesc">AからZまでの26文字に挑戦するモードです。好きな文字から遊べます。落下の速さは変わらないので、落ち着いて形を崩していきましょう。</p>
+        <div class="extraBar">
+          <button class="btn primary" type="button" id="goNext">A からはじめる</button>
+          <span class="progress">クリア済み <b id="extraCount">0</b> / 26</span>
+        </div>
+        <ul class="letters" id="letterList"></ul>
+      </div>
+    </div>
+
+    <div id="vSet" class="view" hidden>
+      <div class="viewbar"><button class="btn sm" type="button" data-nav="top">‹ トップ</button><h2>せってい</h2></div>
+      <section class="setBox" aria-label="音">
+        <h3>音</h3>
+        <div class="setRow"><label for="setBgm">BGM</label><input id="setBgm" type="range" min="0" max="100" step="5"><output id="setBgmV"></output></div>
+        <div class="setRow"><label for="setSfx">効果音</label><input id="setSfx" type="range" min="0" max="100" step="5"><output id="setSfxV"></output></div>
+        <p class="sub">音そのもののオン・オフは、トップ画面の「音」ボタンで切り替えます。</p>
+      </section>
+      <section class="setBox" aria-label="あそび">
+        <h3>あそび</h3>
+        <div class="opts" id="optGhost">
+          <button class="opt" type="button" data-ghost="1" aria-pressed="true"><span class="on">落下位置ガイド：あり</span></button>
+          <button class="opt" type="button" data-ghost="0" aria-pressed="false"><span class="on">落下位置ガイド：なし</span></button>
+        </div>
+        <p class="sub">ブロックが落ちる先を、うすい枠で見せます。</p>
+        <div class="opts" id="optSpeed">
+          <button class="opt" type="button" data-speed="normal" aria-pressed="true"><span class="on">落下：ふつう</span></button>
+          <button class="opt" type="button" data-speed="slow" aria-pressed="false"><span class="on">落下：ゆっくり</span></button>
+          <button class="opt" type="button" data-speed="slower" aria-pressed="false"><span class="on">落下：とてもゆっくり</span></button>
+        </div>
+        <p class="sub">自然に落ちる速さを変えます。パズルの手数や星には影響しません。</p>
+      </section>
+      <section class="setBox" aria-label="ブロックの色">
+        <h3>ブロックの色</h3>
+        <canvas id="setPrev" class="setPrev" aria-hidden="true"></canvas>
+        <div class="opts" id="optPal"></div>
+        <p class="sub">最初に置かれているブロック（点つき）の色は変わりません。</p>
+      </section>
+      <section class="setBox" aria-label="画面のテーマ">
+        <h3>画面のテーマ</h3>
+        <div class="opts" id="optSkin"></div>
+      </section>
+      <section class="setBox" aria-label="バックアップ">
+        <h3>バックアップ</h3>
+        <p class="sub">クリア記録・ステージコレクション・パズルコレクション・せっていを、1つの文章にまとめます。端末を変えるときや、念のための控えにどうぞ。保存先はこのブラウザなので、データを消すと記録もなくなります。</p>
+        <div class="edrow"><button class="btn sm primary" type="button" id="bkCopy">まとめてコピー</button></div>
+        <textarea id="bkText" spellcheck="false" aria-label="バックアップの文章" placeholder="ここにバックアップの文章（KPBK1:…）を貼り付けて「取り込む」"></textarea>
+        <div class="opts" id="optBk">
+          <button class="opt" type="button" data-bk="merge" aria-pressed="true"><span class="on">足して取り込む</span><span class="sub">今の記録は残します。ステージも、ない分だけ足します（おすすめ）</span></button>
+          <button class="opt" type="button" data-bk="over" aria-pressed="false"><span class="on">上書きして取り込む</span><span class="sub">今の記録・コレクション・せっていを、バックアップの内容に置き換えます</span></button>
+        </div>
+        <div class="edrow"><button class="btn sm" type="button" id="bkImport">取り込む</button></div>
+        <span id="bkMsg" class="edinfo" role="status"></span>
+      </section>
+      <button class="btn sm" type="button" id="setReset">せっていをもとに戻す</button>
+    </div>
+
+    <div id="vHow" class="view" hidden>
+      <div class="viewbar"><button class="btn sm" type="button" data-nav="top">‹ トップ</button><h2>あそびかた</h2></div>
+      <section class="howto" aria-label="ルール">
+        <h3>ルール</h3>
+        <p class="lede">さまざまな初期配置から始まる落ちものパズルです。<b>最初から置かれているブロックを全部消せばクリア</b>。最初のブロックは中央に小さな点が付いていて、落ちてくるブロックとは色で見分けられます。ノーマルだけは、初期配置のない、ふつうの落ちものパズルです。パズルは、決まった順番と数のミノで、最初のブロックを全部消す詰め将棋のようなモードです。</p>
+      </section>
+      <section class="howto" aria-label="操作方法">
+        <h3>操作</h3>
+        <dl class="keys">
+          <div><dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>移動</dd></div>
+          <div><dt><kbd>↓</kbd></dt><dd>ソフトドロップ</dd></div>
+          <div><dt><kbd>↑</kbd> <kbd>X</kbd></dt><dd>右回転</dd></div>
+          <div><dt><kbd>Z</kbd></dt><dd>左回転</dd></div>
+          <div><dt><kbd>Space</kbd></dt><dd>ハードドロップ</dd></div>
+          <div><dt><kbd>C</kbd> <kbd>Shift</kbd></dt><dd>ホールド</dd></div>
+          <div><dt><kbd>U</kbd></dt><dd>一手戻す（パズルのみ）</dd></div>
+          <div><dt><kbd>H</kbd></dt><dd>ヒント（パズルのみ）</dd></div>
+          <div><dt><kbd>P</kbd></dt><dd>一時停止</dd></div>
+          <div><dt><kbd>R</kbd></dt><dd>やり直し</dd></div>
+        </dl>
+        <p class="note">スマートフォンでは、プレイ画面の下のボタンで操作します。盤面を左右にドラッグして移動、タップして回転、下へはじいて落下もできます。縦向きでお使いください。</p>
+      </section>
+    </div>
+  </section>
+
+  <section id="play" hidden aria-label="プレイ画面">
+    <p id="rotateNote">画面を縦向きにして遊んでください。<br>縦向きに戻すと、一時停止したところから続けられます。</p>
+    <div class="topbar">
+      <button class="btn sm" type="button" data-top="menu">‹ 選択</button>
+      <div class="title" id="stageName"></div>
+      <button class="btn sm snd" type="button" data-top="sound" aria-label="効果音"></button>
+      <button class="btn sm" type="button" data-top="undo" id="undoBtn" hidden>戻す</button>
+      <button class="btn sm" type="button" data-top="pause">停止</button>
+    </div>
+    <div class="remain">
+      <div class="row"><span class="lbl2" id="remLbl">のこり</span><span class="num" id="remain">0</span><span class="of" id="remOf">/ <span id="total">0</span> ブロック</span></div>
+      <div class="bar" id="barWrap"><i id="bar"></i></div>
+      <div class="seqrow"><div class="seqbar" id="seqbar" aria-label="ミノの順番"></div><button class="btn sm" type="button" data-top="hint" id="hintBtn">ヒント</button></div>
+    </div>
+    <div class="stage-row">
+      <div class="boardwrap" id="boardwrap">
+        <div class="hintmsg" id="hintMsg" hidden></div>
+        <canvas id="board" aria-label="盤面"></canvas>
+        <div class="overlay" id="overlay" hidden></div>
+      </div>
+      <aside class="side" id="side">
+        <div id="holdBox"><div class="lbl">HOLD</div><canvas class="mini" id="hold"></canvas></div>
+        <div><div class="lbl">NEXT</div>
+          <div class="nexts"><canvas class="mini" id="next0"></canvas><canvas class="mini" id="next1"></canvas><canvas class="mini" id="next2"></canvas></div>
+        </div>
+        <div class="stats">
+          <div class="stat">タイム<b id="time">0:00</b></div>
+          <div class="stat"><span id="lblLines">ライン</span><b id="lines">0</b></div>
+          <div class="stat" id="statLv">レベル<b id="level">1</b></div>
+        </div>
+      </aside>
+    </div>
+    <div class="pad" id="pad">
+      <div class="pg">
+        <button class="pb" type="button" data-k="left" aria-label="左へ" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M15 4 7 12l8 8"/></svg></button>
+        <button class="pb" type="button" data-k="right" aria-label="右へ" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M9 4l8 8-8 8"/></svg></button>
+        <button class="pb wide" type="button" data-k="down" aria-label="ソフトドロップ" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M4 8l8 8 8-8"/></svg></button>
+      </div>
+      <div class="pg">
+        <button class="pb" type="button" data-k="rotL" aria-label="左回転" tabindex="-1"><svg class="flip" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3-6.2M20 3v6h-6"/></svg></button>
+        <button class="pb" type="button" data-k="rotR" aria-label="右回転" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3-6.2M20 3v6h-6"/></svg></button>
+        <button class="pb" type="button" data-k="drop" aria-label="ハードドロップ" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M5 4l7 7 7-7M5 13l7 7 7-7"/></svg></button>
+        <button class="pb" type="button" data-k="hold" aria-label="ホールド" tabindex="-1">HOLD</button>
+      </div>
+    </div>
+    <p class="hint">キーボードで操作できます。操作一覧はステージ選択に載っています。</p>
+  </section>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (s) { return document.querySelector(s); };
+
+  /* ---------- constants ---------- */
+  var COLS = 10, VIS = 20, HID = 2, ROWS = VIS + HID;
+  var KINDS = ['I', 'J', 'L', 'O', 'S', 'T', 'Z'];
+  var COLORS = {
+    I: '#46d2f0', J: '#4766e8', L: '#a58bff', O: '#56d8a0', S: '#a5d94f', T: '#26b5b0', Z: '#f06cc0',
+    stone: '#f3ead6', cw: '#fffaf0', cr: '#e7271e', cy: '#fff000'
+  };
+  var DAS = 150, ARR = 45, LOCK_MS = 500, CLEAR_MS = 240;
+
+  var BASE = {
+    I: [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],
+    J: [[1,0,0],[1,1,1],[0,0,0]],
+    L: [[0,0,1],[1,1,1],[0,0,0]],
+    O: [[1,1],[1,1]],
+    S: [[0,1,1],[1,1,0],[0,0,0]],
+    T: [[0,1,0],[1,1,1],[0,0,0]],
+    Z: [[1,1,0],[0,1,1],[0,0,0]]
+  };
+  function rotCW(m) { var n = m.length; return m.map(function (_, r) { return m.map(function (_, c) { return m[n - 1 - c][r]; }); }); }
+  var ROT = {};
+  KINDS.forEach(function (k) {
+    var m = BASE[k]; ROT[k] = [];
+    for (var i = 0; i < 4; i++) {
+      var cells = [];
+      m.forEach(function (row, r) { row.forEach(function (v, c) { if (v) cells.push([c, r]); }); });
+      ROT[k].push(cells);
+      m = rotCW(m);
+    }
+  });
+  var KJ = {
+    '01': [[0,0],[-1,0],[-1,1],[0,-2],[-1,-2]], '10': [[0,0],[1,0],[1,-1],[0,2],[1,2]],
+    '12': [[0,0],[1,0],[1,-1],[0,2],[1,2]],     '21': [[0,0],[-1,0],[-1,1],[0,-2],[-1,-2]],
+    '23': [[0,0],[1,0],[1,1],[0,-2],[1,-2]],    '32': [[0,0],[-1,0],[-1,-1],[0,2],[-1,2]],
+    '30': [[0,0],[-1,0],[-1,-1],[0,2],[-1,2]],  '03': [[0,0],[1,0],[1,1],[0,-2],[1,-2]]
+  };
+  var KI = {
+    '01': [[0,0],[-2,0],[1,0],[-2,-1],[1,2]],   '10': [[0,0],[2,0],[-1,0],[2,1],[-1,-2]],
+    '12': [[0,0],[-1,0],[2,0],[-1,2],[2,-1]],   '21': [[0,0],[1,0],[-2,0],[1,-2],[-2,1]],
+    '23': [[0,0],[2,0],[-1,0],[2,1],[-1,-2]],   '32': [[0,0],[-2,0],[1,0],[-2,-1],[1,2]],
+    '30': [[0,0],[1,0],[-2,0],[1,-2],[-2,1]],   '03': [[0,0],[-1,0],[2,0],[-1,2],[2,-1]]
+  };
+
+  /* ---------- stages (cells are [col, rowFromBottom, colorKey]) ---------- */
+  var CAT_PAT = [
+    '..W...W',
+    '..WWWWW',
+    '..W.W.W',
+    '..WWWWW',
+    'W..RRR.',
+    'WWWWYWW',
+    '.WWWWWW',
+    '.W.W.W.'
+  ];
+  var CAT_KEY = { W: 'cw', R: 'cr', Y: 'cy' };
+
+  function build(fn) { var out = []; fn(function (c, r, k) { out.push([c, r, k || 'stone']); }); return out; }
+
+  var STAGES = [
+    { id: 'slit', name: 'スリット',
+      rule: '6段の壁が積まれていて、右から4列目だけ空いています。その溝を中心に消していきます。',
+      cells: build(function (add) { for (var r = 0; r < 6; r++) for (var c = 0; c < COLS; c++) if (c !== 6) add(c, r); }) },
+    { id: 'square', name: 'スクエア',
+      rule: '中央に6×6の四角い塊。左右の2マス幅の溝を使います。',
+      cells: build(function (add) { for (var r = 0; r < 6; r++) for (var c = 2; c <= 7; c++) add(c, r); }) },
+    { id: 'pyramid', name: 'ピラミッド',
+      rule: '左右1列ずつを空けて、ブロックがピラミッド状に並びます。',
+      cells: build(function (add) { for (var r = 0; r < 4; r++) for (var c = 1 + r; c <= 8 - r; c++) add(c, r); }) },
+    { id: 'mosaic', name: 'モザイク',
+      rule: '下2段に、ブロックが市松模様に並びます。',
+      cells: build(function (add) { for (var r = 0; r < 2; r++) for (var c = 0; c < COLS; c++) if ((r + c) % 2 === 0) add(c, r); }) },
+    { id: 'stair', name: 'ステア',
+      rule: '一番右の列を空けて、右から2列目から左上がりの階段が積まれています。',
+      cells: build(function (add) { for (var r = 0; r < 9; r++) for (var c = 0; c <= 8 - r; c++) add(c, r); }) },
+    { id: 'twin', name: 'ツイン',
+      rule: '左右に横3マス、縦8マスの塔が立っています。',
+      cells: build(function (add) { for (var r = 0; r < 8; r++) { for (var c = 0; c <= 2; c++) { add(c, r); add(c + 7, r); } } }) },
+    { id: 'valley', name: 'バレー',
+      rule: '左右が高く、中央に向かって階段状に低くなる谷。ピラミッドの逆の形です。',
+      cells: build(function (add) { for (var r = 0; r < 4; r++) { for (var c = 0; c <= 3 - r; c++) { add(c, r); add(9 - c, r); } } }) },
+    { id: 'donut', name: 'ドーナツ',
+      rule: '中央に6×6の塊があり、真ん中の2×2だけが空洞になっています。屋根を消してから中を埋めます。',
+      cells: build(function (add) { for (var r = 0; r < 6; r++) for (var c = 2; c <= 7; c++) if (!(r >= 2 && r <= 3 && c >= 4 && c <= 5)) add(c, r); }) },
+    { id: 'diamond', name: 'ダイアモンド',
+      rule: '地面から1マス浮いた、ひし形のブロックです。上半分がピラミッド、下半分が逆ピラミッドです。',
+      cells: build(function (add) {
+        var widths = [2, 4, 6, 6, 4, 2];
+        widths.forEach(function (w, i) { for (var c = (COLS - w) / 2; c < (COLS + w) / 2; c++) add(c, 6 - i); });
+      }) },
+    { id: 'cat', name: 'キャット',
+      rule: 'ドット絵のネコの形にブロックが並びます。首輪と鈴も消す対象です。',
+      cells: build(function (add) {
+        CAT_PAT.forEach(function (row, rt) {
+          row.split('').forEach(function (ch, c) { if (CAT_KEY[ch]) add(c + 1, CAT_PAT.length - 1 - rt, CAT_KEY[ch]); });
+        });
+      }) },
+    { id: 'crown', name: 'クラウン',
+      rule: '王冠の形です。内側に閉じた空洞があるので、上の層から順番に片付けていきます。',
+      cells: build(function (add) {
+        ["#...##...#", "##.####.##", "####..####", "#.######.#"].forEach(function (row, rt) {
+          row.split('').forEach(function (ch, c) { if (ch === '#') add(c, 3 - rt); });
+        });
+      }) },
+    { id: 'tree', name: 'ツリー',
+      rule: '段になった木の形です。段の境目の張り出しの下に、横から滑り込ませて埋めます。',
+      cells: build(function (add) {
+        ["....#.....", "...###....", "..#####...", "...###....", "..#####...", ".#######..", "....#.....", "...###...."].forEach(function (row, rt) {
+          row.split('').forEach(function (ch, c) { if (ch === '#') add(c, 7 - rt); });
+        });
+      }) },
+    { id: 'cross', name: 'クロス',
+      rule: '十字の形です。左右の腕の下に隙間があるので、横から滑り込ませて埋めます。',
+      cells: build(function (add) {
+        ["....##....", "....##....", "..######..", "..######..", "....##....", "....##...."].forEach(function (row, rt) {
+          row.split('').forEach(function (ch, c) { if (ch === '#') add(c, 5 - rt); });
+        });
+      }) },
+    { id: 'ladder', name: 'ハシゴ',
+      rule: 'ハシゴの形です。横木の間は左右を壁にはさまれた空洞です。上の横木から順番に片付けていきます。',
+      cells: build(function (add) {
+        ["..#....#..", "..######..", "..#....#..", "..######..", "..#....#..", "..######..", "..#....#.."].forEach(function (row, rt) {
+          row.split('').forEach(function (ch, c) { if (ch === '#') add(c, 6 - rt); });
+        });
+      }) },
+    { id: 'house', name: 'ハウス',
+      rule: '屋根のついた家の形。屋根の下に隙間があるので、屋根を片付けてから中を埋めます。壁の間の細い空洞は、縦に長いミノで狙います。',
+      cells: build(function (add) {
+        ['....##....', '...####...', '..######..', '.########.', '...##.#...', '...##.#...'].forEach(function (row, rt) {
+          row.split('').forEach(function (ch, c) { if (ch === '#') add(c, 5 - rt); });
+        });
+      }) }
+  ];
+
+  /* Main mode order: easy to hard */
+  var ORDER = ['slit', 'valley', 'pyramid', 'square', 'twin', 'stair', 'donut', 'mosaic', 'diamond', 'crown', 'house', 'cross', 'tree', 'ladder', 'cat'];
+  STAGES = ORDER.map(function (id) { return STAGES.filter(function (s) { return s.id === id; })[0]; });
+
+  /* Extra mode: letters A-Z drawn with a 5x7 pixel font, bottom aligned, starting speed rises with the letter */
+  var GLYPHS = {
+    A: ['.###.', '#...#', '#...#', '#####', '#...#', '#...#', '#...#'],
+    B: ['####.', '#...#', '#...#', '####.', '#...#', '#...#', '####.'],
+    C: ['.###.', '#...#', '#....', '#....', '#....', '#...#', '.###.'],
+    D: ['####.', '#...#', '#...#', '#...#', '#...#', '#...#', '####.'],
+    E: ['#####', '#....', '#....', '####.', '#....', '#....', '#####'],
+    F: ['#####', '#....', '#....', '####.', '#....', '#....', '#....'],
+    G: ['.###.', '#...#', '#....', '#.###', '#...#', '#...#', '.###.'],
+    H: ['#...#', '#...#', '#...#', '#####', '#...#', '#...#', '#...#'],
+    I: ['#####', '..#..', '..#..', '..#..', '..#..', '..#..', '#####'],
+    J: ['..###', '...#.', '...#.', '...#.', '...#.', '#..#.', '.##..'],
+    K: ['#...#', '#..#.', '#.#..', '##...', '#.#..', '#..#.', '#...#'],
+    L: ['#....', '#....', '#....', '#....', '#....', '#....', '#####'],
+    M: ['#...#', '##.##', '#.#.#', '#...#', '#...#', '#...#', '#...#'],
+    N: ['#...#', '##..#', '#.#.#', '#..##', '#...#', '#...#', '#...#'],
+    O: ['.###.', '#...#', '#...#', '#...#', '#...#', '#...#', '.###.'],
+    P: ['####.', '#...#', '#...#', '####.', '#....', '#....', '#....'],
+    Q: ['.###.', '#...#', '#...#', '#...#', '#.#.#', '#..#.', '.##.#'],
+    R: ['####.', '#...#', '#...#', '####.', '#.#..', '#..#.', '#...#'],
+    S: ['.####', '#....', '#....', '.###.', '....#', '....#', '####.'],
+    T: ['#####', '..#..', '..#..', '..#..', '..#..', '..#..', '..#..'],
+    U: ['#...#', '#...#', '#...#', '#...#', '#...#', '#...#', '.###.'],
+    V: ['#...#', '#...#', '#...#', '#...#', '#...#', '.#.#.', '..#..'],
+    W: ['#...#', '#...#', '#...#', '#...#', '#.#.#', '##.##', '#...#'],
+    X: ['#...#', '#...#', '.#.#.', '..#..', '.#.#.', '#...#', '#...#'],
+    Y: ['#...#', '#...#', '.#.#.', '..#..', '..#..', '..#..', '..#..'],
+    Z: ['#####', '....#', '...#.', '..#..', '.#...', '#....', '#####']
+  };
+  var EXTRA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(function (ch, i) {
+    return {
+      id: 'x-' + ch.toLowerCase(), name: ch, lv: 1,
+      rule: 'アルファベット「' + ch + '」の形にブロックが並びます。',
+      cells: build(function (add) {
+        GLYPHS[ch].forEach(function (row, rt) { row.split('').forEach(function (v, x) { if (v === '#') add(x + 2, 6 - rt); }); });
+      })
+    };
+  });
+
+  /* Normal mode: empty board, endless, score attack */
+  var NORMAL = [{
+    id: 'normal', name: 'ノーマル', endless: true, cells: [],
+    rule: 'ブロックを積んで消していく、ふつうの落ちものパズルです。ゲームオーバーまで続きます。'
+  }];
+
+  /* Puzzle mode: fixed piece order, clear every starting block within the piece limit (= sequence length).
+     Stars: best (solver optimum with straight drops) = 3, +1 = 2, +2 = 1. */
+  var PUZZLES = [
+    {id:"j1",name:"入門 1",rows:4,best:3,seq:"ZITSJ",sol:[[1,3],[1,5],[2,3]],cells:[[0,0],[1,0],[2,0],[3,0],[5,0],[6,0],[8,0],[9,0],[0,1],[1,1],[2,1],[3,1],[6,1],[8,1],[9,1],[0,2],[1,2],[2,2],[3,2],[6,2],[8,2],[9,2],[0,3],[1,3],[2,3],[6,3],[8,3],[9,3]]},
+    {id:"j2",name:"入門 2",rows:4,best:3,seq:"SZLIL",sol:[[1,0],[0,1],[3,3]],cells:[[0,0],[1,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[0,1],[3,1],[5,1],[6,1],[7,1],[8,1],[9,1],[0,2],[5,2],[6,2],[7,2],[8,2],[9,2],[0,3],[5,3],[6,3],[7,3],[8,3],[9,3]]},
+    {id:"i3",name:"入門 3",rows:3,best:4,seq:"IOSTSI",sol:[[1,-2],[0,8],[1,1],[0,4]],cells:[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[0,1],[1,1],[2,1],[7,1],[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[8,2],[9,2]]},
+    {id:"j4",name:"入門 4",rows:4,best:5,seq:"OSTILII",sol:[[0,4],[0,4],[3,2],[1,7],[2,2]],cells:[[0,0],[1,0],[2,0],[6,0],[7,0],[8,0],[0,1],[1,1],[6,1],[7,1],[8,1],[0,2],[1,2],[6,2],[7,2],[8,2],[0,3],[1,3],[7,3],[8,3]]},
+    {id:"i5",name:"入門 5",rows:4,best:6,seq:"LILOLOZL",sol:[[2,1],[0,0],[3,8],[0,7],[3,5],[0,3]],cells:[[0,0],[1,0],[2,0],[5,0],[7,0],[8,0],[9,0],[0,1],[2,1],[5,1],[0,2],[4,2],[4,3],[5,3],[6,3],[7,3]]},
+    {id:"q1",name:"パズル 1",rows:6,best:7,seq:"TJZIOZTTI",sol:[[3,3],[1,-1],[1,2],[1,6],[0,0],[1,2],[0,6]],cells:[[0,0],[1,0],[2,0],[3,0],[5,0],[6,0],[7,0],[9,0],[1,1],[2,1],[5,1],[6,1],[7,1],[9,1],[1,2],[2,2],[5,2],[6,2],[7,2],[9,2],[2,3],[5,3],[6,3],[7,3],[9,3],[2,4],[5,4],[9,4]]},
+    {id:"q2",name:"パズル 2",rows:6,best:7,seq:"IZTSJOZIO",sol:[[1,1],[1,7],[1,7],[1,4],[1,3],[0,0],[1,5]],cells:[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[7,0],[9,0],[0,1],[1,1],[2,1],[3,1],[7,1],[2,2],[7,2],[2,3]]},
+    {id:"q3",name:"パズル 3",rows:6,best:8,seq:"LILTJZJOZL",sol:[[1,-1],[1,0],[3,0],[1,2],[1,7],[0,3],[1,4],[0,3]],cells:[[0,0],[1,0],[2,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[0,1],[1,1],[2,1],[5,1],[6,1],[7,1],[8,1],[9,1],[6,2],[7,2],[8,2],[9,2],[6,3],[7,3],[9,3],[6,4],[7,4],[9,4],[7,5]]},
+    {id:"q4",name:"パズル 4",rows:6,best:8,seq:"ILISOSOJJZ",sol:[[1,-2],[3,2],[0,1],[1,6],[0,1],[1,6],[0,3],[2,6]],cells:[[0,0],[1,0],[2,0],[4,0],[5,0],[6,0],[7,0],[9,0],[0,1],[1,1],[2,1],[4,1],[5,1],[6,1],[9,1],[1,2],[4,2],[5,2],[6,2],[9,2],[5,3],[6,3],[9,3],[5,4],[6,4],[9,4],[5,5],[9,5]]},
+    {id:"q5",name:"パズル 5",rows:6,best:8,seq:"OOTJTSZTOO",sol:[[0,5],[0,8],[1,1],[2,1],[1,3],[1,3],[1,5],[2,5]],cells:[[0,0],[1,0],[2,0],[3,0],[4,0],[7,0],[8,0],[9,0],[0,1],[1,1],[2,1],[3,1],[7,1],[8,1],[9,1],[0,2],[1,2],[3,2],[7,2],[8,2],[9,2],[0,3],[1,3],[8,3],[9,3],[0,4],[1,4],[0,5]]},
+    {id:"q6",name:"パズル 6",rows:6,best:9,seq:"OOOSTOIOLLO",sol:[[0,1],[0,7],[0,7],[0,7],[3,5],[0,1],[1,2],[0,3],[2,5]],cells:[[0,0],[1,0],[2,0],[3,0],[5,0],[6,0],[9,0],[0,1],[1,1],[2,1],[3,1],[5,1],[6,1],[9,1],[0,2],[3,2],[5,2],[9,2],[0,3],[3,3],[9,3],[0,4],[9,4],[0,5]]},
+    {id:"q7",name:"パズル 7",rows:6,best:9,seq:"ZIOSOLZOLOJ",sol:[[0,4],[1,6],[0,0],[1,5],[0,4],[1,-1],[0,6],[0,1],[3,8]],cells:[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[9,0],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[9,1],[2,2],[3,2],[4,2],[9,2],[2,3],[3,3],[3,4],[3,5]]},
+    {id:"q8",name:"パズル 8",rows:5,best:9,seq:"OOOJOSLOLLL",sol:[[0,6],[0,8],[0,7],[1,5],[0,0],[1,1],[3,8],[0,3],[2,2]],cells:[[0,0],[1,0],[2,0],[4,0],[5,0],[0,1],[1,1],[4,1],[5,1],[0,2],[1,2],[5,2],[5,3],[5,4]]},
+    {id:"q9",name:"パズル 9",rows:6,best:10,seq:"OOIZZISLJOTS",sol:[[0,1],[0,3],[1,-2],[1,4],[1,4],[1,6],[0,3],[3,0],[1,1],[0,8]],cells:[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[9,0],[3,1],[4,1],[6,1],[7,1],[9,1],[7,2],[9,2],[7,3],[9,3],[7,4],[7,5]]},
+    {id:"q10",name:"パズル 10",rows:6,best:10,seq:"ISZIOOLJIITI",sol:[[1,7],[0,6],[1,0],[1,-1],[0,5],[0,5],[1,6],[1,1],[0,4],[1,6]],cells:[[0,0],[2,0],[3,0],[4,0],[5,0],[9,0],[0,1],[3,1],[4,1],[9,1],[0,2],[3,2],[4,2],[0,3],[3,3],[4,3],[0,4],[3,4],[4,4],[0,5]]},
+    {id:"q11",name:"パズル 11",rows:7,best:11,seq:"IIIOIZOJLSTZI",sol:[[1,-2],[1,-1],[1,1],[0,5],[1,6],[0,0],[0,5],[2,5],[3,2],[0,6],[2,4]],cells:[[0,0],[1,0],[2,0],[4,0],[7,0],[8,0],[9,0],[0,1],[2,1],[4,1],[7,1],[8,1],[9,1],[2,2],[4,2],[7,2],[9,2],[2,3],[4,3],[9,3],[2,4],[4,4],[9,4],[4,5],[9,5],[9,6]]},
+    {id:"q12",name:"パズル 12",rows:6,best:11,seq:"OIOTZTOOLOLOJ",sol:[[0,0],[1,7],[0,0],[0,5],[1,2],[1,4],[0,0],[0,4],[3,2],[0,6],[3,6]],cells:[[2,0],[3,0],[4,0],[8,0],[9,0],[2,1],[4,1],[8,1],[9,1],[2,2],[8,2],[2,3],[8,3],[2,4],[8,4],[8,5]]}
+  ].map(function (p) {
+    return { id: p.id, name: p.name, rows: p.rows, best: p.best, seq: p.seq.split(''), sol: p.sol, limit: p.seq.length, puz: true,
+      cells: p.cells.map(function (c) { return [c[0], c[1], 'stone']; }),
+      rule: 'ミノは決まった順番で ' + p.seq.length + ' 個だけ。この中で、最初のブロックを全部消そう。' };
+  });
+
+  /* ---------- save (per-viewer convenience only) ---------- */
+  var SAVE_KEY = 'block-nanahenge-v1';
+  function loadSave() { try { return JSON.parse(localStorage.getItem(SAVE_KEY)) || {}; } catch (e) { return {}; } }
+  function writeSave(o) { try { localStorage.setItem(SAVE_KEY, JSON.stringify(o)); } catch (e) {} }
+  var save = loadSave();
+
+  /* ---------- sound effects (Web Audio, synthesized; no files) ---------- */
+  var CFG_KEY = 'block-nanahenge-settings';
+  var PALETTES = {
+    standard: { name: 'スタンダード', c: { I: '#46d2f0', J: '#4766e8', L: '#a58bff', O: '#56d8a0', S: '#a5d94f', T: '#26b5b0', Z: '#f06cc0' } },
+    pastel:   { name: 'やわらか',     c: { I: '#9fe3f5', J: '#9fb4f5', L: '#cbb9ff', O: '#a6efcf', S: '#cfeea0', T: '#8fdbd7', Z: '#f7b0dc' } },
+    classic:  { name: 'クラシック',   c: { I: '#00e0e8', J: '#2a3ff0', L: '#f09a00', O: '#f0e000', S: '#20d020', T: '#b030e8', Z: '#ee2a2a' } },
+    cvd:      { name: '見分けやすい', c: { I: '#56b4e9', J: '#0072b2', L: '#e69f00', O: '#f0e442', S: '#009e73', T: '#cc79a7', Z: '#d55e00' } }
+  };
+  var SKINS = {
+    dark:     { name: 'ダーク',       sw: ['#0c0d13', '#1d2030', '#d9261c'] },
+    midnight: { name: 'ミッドナイト', sw: ['#090e1d', '#1a2542', '#3b6fe0'] },
+    forest:   { name: 'フォレスト',   sw: ['#0a120e', '#182b22', '#2a9d63'] },
+    paper:    { name: 'ペーパー',     sw: ['#f3efe4', '#ebe5d3', '#d9261c'] }
+  };
+  var SPEED_MUL = { normal: 1, slow: 1.6, slower: 2.4 };
+  var CFG_DEF = { bgm: 100, sfx: 100, ghost: true, speed: 'normal', palette: 'standard', skin: 'dark' };
+  var CFG = {}; Object.keys(CFG_DEF).forEach(function (k) { CFG[k] = CFG_DEF[k]; });
+  function cfgLoad() {
+    try {
+      var o = JSON.parse(localStorage.getItem(CFG_KEY) || '{}'); if (!o || typeof o !== 'object') return;
+      ['bgm', 'sfx'].forEach(function (k) { if (typeof o[k] === 'number') CFG[k] = Math.max(0, Math.min(100, Math.round(o[k]))); });
+      if (typeof o.ghost === 'boolean') CFG.ghost = o.ghost;
+      if (SPEED_MUL[o.speed]) CFG.speed = o.speed;
+      if (PALETTES[o.palette]) CFG.palette = o.palette;
+      if (SKINS[o.skin]) CFG.skin = o.skin;
+    } catch (e) {}
+  }
+  function cfgSave() { try { localStorage.setItem(CFG_KEY, JSON.stringify(CFG)); } catch (e) {} }
+  function applyPalette() { var p = PALETTES[CFG.palette].c; KINDS.forEach(function (k) { COLORS[k] = p[k]; }); }
+  function applySkin() { if (CFG.skin === 'dark') document.documentElement.removeAttribute('data-skin'); else document.documentElement.setAttribute('data-skin', CFG.skin); }
+  cfgLoad(); applyPalette(); applySkin();
+  var SND_KEY = 'block-nanahenge-sound';
+  var soundOn = true;
+  try { soundOn = localStorage.getItem(SND_KEY) !== 'off'; } catch (e) {}
+  var AC = null, master = null, noiseBuf = null;
+  function audioEnsure() {
+    try {
+      if (!AC) {
+        var Ctor = window.AudioContext || window.webkitAudioContext;
+        if (!Ctor) return false;
+        AC = new Ctor();
+        master = AC.createGain(); master.gain.value = 0.5 * CFG.sfx / 100; master.connect(AC.destination);
+        noiseBuf = AC.createBuffer(1, Math.floor(AC.sampleRate * 0.3), AC.sampleRate);
+        var d = noiseBuf.getChannelData(0);
+        for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+      }
+      if (AC.state === 'suspended') AC.resume();
+      return true;
+    } catch (e) { return false; }
+  }
+  function tone(freq, dur, type, vol, delay, to) {
+    if (!soundOn || !AC) return;
+    try {
+      var t0 = AC.currentTime + (delay || 0) + 0.005;
+      var o = AC.createOscillator(), g = AC.createGain();
+      o.type = type || 'square';
+      o.frequency.setValueAtTime(freq, t0);
+      if (to) o.frequency.exponentialRampToValueAtTime(to, t0 + dur);
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(vol, t0 + 0.008);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      o.connect(g); g.connect(master);
+      o.start(t0); o.stop(t0 + dur + 0.02);
+    } catch (e) {}
+  }
+  function puff(dur, vol, delay, f0, f1) {
+    if (!soundOn || !AC || !noiseBuf) return;
+    try {
+      var t0 = AC.currentTime + (delay || 0) + 0.005;
+      var s = AC.createBufferSource(), f = AC.createBiquadFilter(), g = AC.createGain();
+      s.buffer = noiseBuf;
+      f.type = 'lowpass'; f.frequency.setValueAtTime(f0, t0); f.frequency.exponentialRampToValueAtTime(f1, t0 + dur);
+      g.gain.setValueAtTime(vol, t0); g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      s.connect(f); f.connect(g); g.connect(master);
+      s.start(t0); s.stop(t0 + dur + 0.02);
+    } catch (e) {}
+  }
+  var lastMoveAt = 0;
+  var SFX = {
+    move: function () { var n = Date.now(); if (n - lastMoveAt < 30) return; lastMoveAt = n; tone(240, 0.03, 'square', 0.04); },
+    rotate: function () { tone(420, 0.05, 'square', 0.05, 0, 580); },
+    land: function () { tone(120, 0.09, 'triangle', 0.2, 0, 70); puff(0.05, 0.12, 0, 1200, 300); },
+    drop: function () { tone(900, 0.08, 'sawtooth', 0.035, 0, 220); tone(100, 0.16, 'sine', 0.28, 0.07, 45); puff(0.1, 0.2, 0.07, 1800, 200); },
+    hold: function () { tone(520, 0.06, 'triangle', 0.08, 0, 340); },
+    lines: function (n) {
+      var f = [523, 659, 784, 1047, 1319], k = Math.min(4, n) + 1;
+      for (var i = 0; i < k; i++) tone(f[i], 0.14, 'triangle', 0.13, i * 0.055);
+    },
+    init: function () { tone(1568, 0.28, 'sine', 0.12, 0.08); tone(2349, 0.22, 'sine', 0.06, 0.08); },
+    clear: function () {
+      var f = [523, 659, 784, 1047], i;
+      for (i = 0; i < f.length; i++) { tone(f[i], 0.16, 'triangle', 0.14, i * 0.11); tone(f[i], 0.16, 'square', 0.03, i * 0.11); }
+      tone(1047, 0.5, 'triangle', 0.14, 0.5); tone(784, 0.5, 'triangle', 0.1, 0.5); tone(1319, 0.5, 'triangle', 0.08, 0.5);
+    },
+    best: function () { tone(1319, 0.14, 'triangle', 0.12, 1.1); tone(1568, 0.3, 'triangle', 0.12, 1.24); },
+    over: function () {
+      var f = [392, 330, 262, 196], i;
+      for (i = 0; i < f.length; i++) tone(f[i], 0.2, 'sawtooth', 0.07, i * 0.18, f[i] * 0.97);
+    },
+    start: function () { tone(440, 0.06, 'square', 0.06); tone(660, 0.1, 'square', 0.06, 0.07); },
+    ui: function () { tone(700, 0.035, 'square', 0.04); }
+  };
+  function drawSndButtons() {
+    document.querySelectorAll('.snd').forEach(function (b) {
+      b.textContent = soundOn ? '音 オン' : '音 オフ';
+      b.setAttribute('aria-pressed', String(soundOn));
+    });
+  }
+  function toggleSound() {
+    soundOn = !soundOn;
+    try { localStorage.setItem(SND_KEY, soundOn ? 'on' : 'off'); } catch (e) {}
+    drawSndButtons();
+    if (soundOn && audioEnsure()) SFX.ui();
+    bgmSync();
+  }
+  drawSndButtons();
+  $('#sndMenu').addEventListener('click', toggleSound);
+  /* browsers start audio only after a gesture, so unlock on the first tap or key press */
+  /* ---------- BGM: looping files decoded into Web Audio (gapless) ---------- */
+  /* each file holds 1 s of the loop on both sides, so start/end are the loop points inside the file */
+  var BGM_TRACKS = {
+    menu:   { url: 'bgm-menu.mp3',   start: 1, end: 151.5,   vol: 0.5,  p: null },
+    main:   { url: 'bgm-main.mp3',   start: 1, end: 164.633, vol: 0.25, p: null },
+    hard:   { url: 'bgm-hard.mp3',   start: 1, end: 171.359, vol: 0.25, p: null },
+    extra:  { url: 'bgm-extra.mp3',  start: 1, end: 173.549, vol: 0.25, p: null },
+    normal: { url: 'bgm-normal.mp3', start: 1, end: 171.256, vol: 0.25, p: null },
+    puzzle: { url: 'bgm-puzzle.mp3', start: 1, end: 153.216, vol: 0.25, p: null }
+  };
+  var HARD_STAGES = ['diamond', 'crown', 'tree', 'cross', 'house', 'ladder', 'cat'];   /* main-mode stages that get the tense track */
+  /* which track belongs to the screen the player is on right now */
+  function bgmWanted() {
+    if (!soundOn || !AC) return null;
+    if (!menu.hidden) return 'menu';
+    if (play.hidden || !LIST[stageIdx]) return null;
+    if (mode === 'normal') return 'normal';
+    if (mode === 'extra') return 'extra';
+    if (mode === 'puzzle' || mode === 'pcode') return 'puzzle';
+    return HARD_STAGES.indexOf(LIST[stageIdx].id) >= 0 ? 'hard' : 'main';
+  }
+  var bgmCur = null, bgmWant = null;
+  function bgmLoad(t) {
+    if (!t.p) {
+      t.p = fetch(t.url)
+        .then(function (r) { if (!r.ok) throw new Error('bgm'); return r.arrayBuffer(); })
+        .then(function (ab) { return new Promise(function (ok, ng) { AC.decodeAudioData(ab, ok, ng); }); })
+        .catch(function () { t.p = null; return null; });
+    }
+    return t.p;
+  }
+  function bgmFadeOut(cur, sec) {
+    try {
+      var now = AC.currentTime, g = cur.gain.gain;
+      g.cancelScheduledValues(now);
+      g.setValueAtTime(Math.max(g.value, 0.0001), now);
+      g.exponentialRampToValueAtTime(0.0001, now + sec);
+      cur.src.stop(now + sec + 0.05);
+    } catch (e) {}
+  }
+  function bgmVolApply() {
+    if (!bgmCur || !AC) return;
+    try { var g = bgmCur.gain.gain, now = AC.currentTime; g.cancelScheduledValues(now); g.setValueAtTime(Math.max(0.0001, bgmCur.vol * CFG.bgm / 100), now); } catch (e) {}
+  }
+  function bgmSync() {
+    var want = bgmWanted();
+    if (want === bgmWant) return;
+    bgmWant = want;
+    if (bgmCur) { bgmFadeOut(bgmCur, 0.5); bgmCur = null; $('#app').dataset.bgm = ''; }
+    /* keep only the wanted track decoded; a decoded track is about 65 MB */
+    Object.keys(BGM_TRACKS).forEach(function (k) { if (k !== want) BGM_TRACKS[k].p = null; });
+    if (!want) return;
+    var t = BGM_TRACKS[want];
+    bgmLoad(t).then(function (buf) {
+      if (!buf || bgmWant !== want || bgmCur) return;
+      try {
+        var now = AC.currentTime, src = AC.createBufferSource(), g = AC.createGain();
+        src.buffer = buf; src.loop = true; src.loopStart = t.start; src.loopEnd = t.end;
+        g.gain.setValueAtTime(0.0001, now); g.gain.exponentialRampToValueAtTime(Math.max(0.0001, t.vol * CFG.bgm / 100), now + 1.5);
+        src.connect(g); g.connect(AC.destination);
+        src.start(0, t.start);
+        bgmCur = { src: src, gain: g, vol: t.vol };
+        $('#app').dataset.bgm = want;
+      } catch (e) {}
+    });
+  }
+  ['pointerdown', 'keydown'].forEach(function (ev) { window.addEventListener(ev, function () { if (audioEnsure()) bgmSync(); }, true); });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.btn, .stage, .letter, .modeCard');
+    if (!b || b.classList.contains('snd')) return;
+    var a = b.dataset && b.dataset.act;
+    if (a === 'start' || a === 'restart') return;
+    SFX.ui();
+  });
+
+  /* ---------- drawing helpers ---------- */
+  var dpr = function () { return Math.min(3, window.devicePixelRatio || 1); };
+  function fitCanvas(cv, w, h) {
+    var d = dpr();
+    cv.style.width = w + 'px'; cv.style.height = h + 'px';
+    cv.width = Math.round(w * d); cv.height = Math.round(h * d);
+    var c = cv.getContext('2d');
+    c.setTransform(d, 0, 0, d, 0, 0);
+    return c;
+  }
+  function drawBlock(ctx, x, y, s, color, init, alpha) {
+    ctx.globalAlpha = alpha == null ? 1 : alpha;
+    ctx.fillStyle = color; ctx.fillRect(x, y, s, s);
+    var b = Math.max(2, Math.round(s * 0.12));
+    ctx.fillStyle = 'rgba(255,255,255,.38)'; ctx.fillRect(x, y, s, b); ctx.fillRect(x, y, b, s);
+    ctx.fillStyle = 'rgba(0,0,0,.3)'; ctx.fillRect(x, y + s - b, s, b); ctx.fillRect(x + s - b, y, b, s);
+    if (init) {
+      var d = Math.max(2, Math.round(s * 0.2));
+      ctx.fillStyle = 'rgba(20,18,30,.6)';
+      ctx.fillRect(x + Math.floor((s - d) / 2), y + Math.floor((s - d) / 2), d, d);
+    }
+    ctx.globalAlpha = 1;
+  }
+  function drawPieceIn(ctx, k, w, h, s, alpha) {
+    var cells = ROT[k][0], minx = 9, maxx = 0, miny = 9, maxy = 0;
+    cells.forEach(function (p) { minx = Math.min(minx, p[0]); maxx = Math.max(maxx, p[0]); miny = Math.min(miny, p[1]); maxy = Math.max(maxy, p[1]); });
+    var ox = Math.round((w - (maxx - minx + 1) * s) / 2), oy = Math.round((h - (maxy - miny + 1) * s) / 2);
+    cells.forEach(function (p) { drawBlock(ctx, ox + (p[0] - minx) * s, oy + (p[1] - miny) * s, s, COLORS[k], false, alpha); });
+  }
+
+  /* ---------- menu ---------- */
+  var menu = $('#menu'), play = $('#play');
+  var stageList = $('#stageList');
+
+  function drawThumb(cv, cells, rows, T) {
+    var d = dpr(), w = T * COLS, h = T * rows;
+    cv.style.width = w + 'px'; cv.style.height = h + 'px';
+    cv.width = w * d; cv.height = h * d;
+    var c = cv.getContext('2d'); c.setTransform(d, 0, 0, d, 0, 0);
+    c.fillStyle = '#0a0b11'; c.fillRect(0, 0, w, h);
+    cells.forEach(function (p) { c.fillStyle = COLORS[p[2]]; c.fillRect(p[0] * T + 1, (rows - 1 - p[1]) * T + 1, T - 2, T - 2); });
+  }
+
+  STAGES.forEach(function (s, i) {
+    var li = document.createElement('li');
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'stage'; b.dataset.i = i;
+    b.innerHTML = '<canvas class="thumb" aria-hidden="true"></canvas>' +
+      '<span class="info"><span class="name">' + s.name + '</span><span class="rule">' + s.rule + '</span>' +
+      '<span class="meta"><span>' + s.cells.length + 'ブロック</span><span class="done" hidden></span></span></span>';
+    li.appendChild(b); stageList.appendChild(li);
+    drawThumb(b.querySelector('canvas'), s.cells, 20, 7);
+  });
+  stageList.addEventListener('click', function (e) {
+    var b = e.target.closest('.stage'); if (b) startStage('main', +b.dataset.i);
+  });
+
+  var puzList = $('#puzList');
+  PUZZLES.forEach(function (s, i) {
+    var li = document.createElement('li');
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'stage'; b.dataset.i = i;
+    b.innerHTML = '<canvas class="thumb" aria-hidden="true"></canvas>' +
+      '<span class="info"><span class="name">' + s.name + '</span><span class="rule">ミノ' + s.limit + '個 ・ ★3は' + s.best + '個以内</span>' +
+      '<span class="meta"><span>' + s.cells.length + 'ブロック</span><span class="done stars" hidden></span></span></span>';
+    li.appendChild(b); puzList.appendChild(li);
+    drawThumb(b.querySelector('canvas'), s.cells, s.rows, 7);
+  });
+  puzList.addEventListener('click', function (e) {
+    var b = e.target.closest('.stage'); if (b) startStage('puzzle', +b.dataset.i);
+  });
+  function starsHtml(n) { return '★★★'.slice(0, n) + '<span class="off">' + '★★★'.slice(0, 3 - n) + '</span>'; }
+
+  var letterList = $('#letterList');
+  EXTRA.forEach(function (s, i) {
+    var li = document.createElement('li');
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'letter'; b.dataset.i = i;
+    b.setAttribute('aria-label', 'ステージ ' + s.name);
+    b.innerHTML = '<canvas class="thumb" aria-hidden="true"></canvas><span class="ch">' + s.name + '</span><span class="st">クリア済み</span>';
+    li.appendChild(b); letterList.appendChild(li);
+    drawThumb(b.querySelector('canvas'), s.cells, 8, 6);
+  });
+  letterList.addEventListener('click', function (e) {
+    var b = e.target.closest('.letter'); if (b) startStage('extra', +b.dataset.i);
+  });
+
+  /* menu has three screens: top, the stage list of one mode, and how to play */
+  function showView(v) {
+    $('#vTop').hidden = v !== 'top'; $('#vMode').hidden = v !== 'mode'; $('#vHow').hidden = v !== 'how'; $('#vSet').hidden = v !== 'set';
+    window.scrollTo(0, 0);
+  }
+  var MODE_TITLE = { main: 'メインモード', normal: 'ノーマル', extra: 'エクストラ', puzzle: 'パズル', editor: 'エディタ', pcode: 'パズルエディタ' };
+  function setMode(m) {
+    $('#paneMain').hidden = m !== 'main'; $('#paneNormal').hidden = m !== 'normal'; $('#paneExtra').hidden = m !== 'extra'; $('#panePuzzle').hidden = m !== 'puzzle'; $('#paneEditor').hidden = m !== 'editor'; $('#panePEd').hidden = m !== 'pcode';
+    $('#modeTitle').textContent = MODE_TITLE[m];
+  }
+  menu.addEventListener('click', function (e) {
+    var c = e.target.closest('.modeCard');
+    if (c) { mode = c.dataset.mode; setMode(mode); refreshMenu(); showView('mode'); return; }
+    var n = e.target.closest('[data-nav]');
+    if (n) { showView('top'); return; }
+    if (e.target.closest('#goHow')) showView('how');
+    if (e.target.closest('#goSet')) showView('set');
+  });
+  (function drawStrip() {
+    var el = $('#strip');
+    KINDS.forEach(function (k) { var i = document.createElement('i'); i.style.background = COLORS[k]; el.appendChild(i); });
+  })();
+  function firstOpen() { for (var i = 0; i < EXTRA.length; i++) if (!save[EXTRA[i].id]) return i; return 0; }
+  $('#goNext').addEventListener('click', function () { startStage('extra', firstOpen()); });
+  $('#goNormal').addEventListener('click', function () { startStage('normal', 0); });
+
+
+  /* ---------- settings screen ---------- */
+  var setPrev = $('#setPrev');
+  function drawSetPrev() {
+    var w = 8 * 46, h = 44, c = fitCanvas(setPrev, w, h);
+    c.fillStyle = '#0a0b11'; c.fillRect(0, 0, w, h);
+    KINDS.forEach(function (k, i) { c.save(); c.translate(i * 46, 0); drawPieceIn(c, k, 46, h, 9); c.restore(); });
+    drawBlock(c, 7 * 46 + 12, 10, 22, COLORS.stone, true);
+  }
+  function swHtml(cols) { return '<span class="sw">' + cols.map(function (x) { return '<i style="background:' + x + '"></i>'; }).join('') + '</span>'; }
+  function buildOpts(id, obj, keyAttr, colsOf) {
+    var el = $(id); el.textContent = '';
+    Object.keys(obj).forEach(function (k) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'opt'; b.dataset[keyAttr] = k;
+      b.innerHTML = '<span class="on"></span>' + swHtml(colsOf(obj[k])); b.firstChild.textContent = obj[k].name; el.appendChild(b);
+    });
+  }
+  buildOpts('#optPal', PALETTES, 'pal', function (p) { return KINDS.map(function (k) { return p.c[k]; }); });
+  buildOpts('#optSkin', SKINS, 'skin', function (p) { return p.sw; });
+  function setRefresh() {
+    $('#setBgm').value = CFG.bgm; $('#setSfx').value = CFG.sfx; $('#setBgmV').textContent = CFG.bgm; $('#setSfxV').textContent = CFG.sfx;
+    function mark(sel, attr, val) { document.querySelectorAll(sel + ' .opt').forEach(function (b) { b.setAttribute('aria-pressed', String(String(b.dataset[attr]) === String(val))); }); }
+    mark('#optGhost', 'ghost', CFG.ghost ? 1 : 0); mark('#optSpeed', 'speed', CFG.speed); mark('#optPal', 'pal', CFG.palette); mark('#optSkin', 'skin', CFG.skin);
+    Array.prototype.forEach.call($('#strip').children, function (i, n) { i.style.background = COLORS[KINDS[n]]; });
+    drawSetPrev();
+  }
+  $('#setBgm').addEventListener('input', function () { CFG.bgm = +this.value; $('#setBgmV').textContent = CFG.bgm; bgmVolApply(); cfgSave(); });
+  $('#setSfx').addEventListener('input', function () { CFG.sfx = +this.value; $('#setSfxV').textContent = CFG.sfx; if (master) master.gain.value = 0.5 * CFG.sfx / 100; cfgSave(); });
+  $('#setSfx').addEventListener('change', function () { if (audioEnsure()) SFX.ui(); });
+  $('#vSet').addEventListener('click', function (e) {
+    var b = e.target.closest('.opt'); if (!b) return;
+    if (b.dataset.ghost != null) CFG.ghost = b.dataset.ghost === '1';
+    if (b.dataset.speed) CFG.speed = b.dataset.speed;
+    if (b.dataset.pal) { CFG.palette = b.dataset.pal; applyPalette(); }
+    if (b.dataset.skin) { CFG.skin = b.dataset.skin; applySkin(); }
+    cfgSave(); setRefresh();
+  });
+  $('#setReset').addEventListener('click', function () {
+    Object.keys(CFG_DEF).forEach(function (k) { CFG[k] = CFG_DEF[k]; });
+    applyPalette(); applySkin(); if (master) master.gain.value = 0.5; bgmVolApply(); cfgSave(); setRefresh();
+  });
+  window.addEventListener('resize', function () { if (!$('#vSet').hidden) drawSetPrev(); });
+  setRefresh();
+
+  /* ---------- editor (prototype) ---------- */
+  var ED_ROWS = 12, ED_KEY = 'block-nanahenge-editor', ED_ALPHA = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+  var CUSTOM = [], ed = { rows: [] };
+  for (var ey = 0; ey < ED_ROWS; ey++) ed.rows.push(new Array(COLS).fill(0));
+  var edCv = $('#edCanvas'), edCodeEl = $('#edCode'), edMsgEl = $('#edMsg'), edCell = 30, edPaint = null;
+  function edEncode() {
+    var top = -1, y, c, s = '';
+    for (y = 0; y < ED_ROWS; y++) if (ed.rows[y].some(Boolean)) top = y;
+    if (top < 0) return '';
+    for (y = 0; y <= top; y++) {
+      var v = 0; for (c = 0; c < COLS; c++) if (ed.rows[y][c]) v |= 1 << c;
+      s += ED_ALPHA[v >> 5] + ED_ALPHA[v & 31];
+    }
+    return ('K1' + s).replace(/(.{4})(?=.)/g, '$1-');
+  }
+  function edDecode(str) {   /* returns rows (bottom-up arrays of 0/1) or null */
+    var t = String(str).toUpperCase().replace(/[^0-9A-Z]/g, '').replace(/O/g, '0').replace(/[IL]/g, '1');
+    if (t.slice(0, 2) !== 'K1') return null;
+    var body = t.slice(2); if (!body.length || body.length % 2 || body.length / 2 > ED_ROWS) return null;
+    var rows = [], i, c;
+    for (i = 0; i < body.length; i += 2) {
+      var a = ED_ALPHA.indexOf(body[i]), b = ED_ALPHA.indexOf(body[i + 1]);
+      if (a < 0 || b < 0 || a > 31) return null;
+      var v = a * 32 + b, row = [];
+      for (c = 0; c < COLS; c++) row.push((v >> c) & 1);
+      rows.push(row);
+    }
+    return rows;
+  }
+  function edCells() {
+    var out = [], y, c;
+    for (y = 0; y < ED_ROWS; y++) for (c = 0; c < COLS; c++) if (ed.rows[y][c]) out.push([c, y, 'stone']);
+    return out;
+  }
+  function edSay(t) { edMsgEl.textContent = t || ''; }
+  function edDraw() {
+    var d = dpr(); edCell = Math.max(22, Math.min(34, Math.floor(Math.min(window.innerWidth - 36, 420) / COLS)));
+    var w = edCell * COLS, h = edCell * ED_ROWS;
+    edCv.style.width = w + 'px'; edCv.style.height = h + 'px'; edCv.width = w * d; edCv.height = h * d;
+    var c = edCv.getContext('2d'); c.setTransform(d, 0, 0, d, 0, 0);
+    c.fillStyle = '#0a0b11'; c.fillRect(0, 0, w, h);
+    c.strokeStyle = 'rgba(255,255,255,.08)'; c.lineWidth = 1; c.beginPath();
+    for (var x = 1; x < COLS; x++) { c.moveTo(x * edCell + .5, 0); c.lineTo(x * edCell + .5, h); }
+    for (var y = 1; y < ED_ROWS; y++) { c.moveTo(0, y * edCell + .5); c.lineTo(w, y * edCell + .5); }
+    c.stroke();
+    var n = 0;
+    for (y = 0; y < ED_ROWS; y++) for (x = 0; x < COLS; x++) if (ed.rows[y][x]) { n++; drawBlock(c, x * edCell, (ED_ROWS - 1 - y) * edCell, edCell, COLORS.stone, true); }
+    $('#edCount').textContent = 'ブロック ' + n + ' 個';
+  }
+  function edStore() {
+    var code = edEncode(); edCodeEl.value = code;
+    try { localStorage.setItem(ED_KEY, code); } catch (e) {}
+  }
+  function edAt(e) {
+    var r = edCv.getBoundingClientRect();
+    var x = Math.floor((e.clientX - r.left) / r.width * COLS), yy = Math.floor((e.clientY - r.top) / r.height * ED_ROWS);
+    return (x < 0 || x >= COLS || yy < 0 || yy >= ED_ROWS) ? null : [x, ED_ROWS - 1 - yy];
+  }
+  function edSet(c) { if (c && ed.rows[c[1]][c[0]] !== edPaint) { ed.rows[c[1]][c[0]] = edPaint; edDraw(); } }
+  edCv.addEventListener('pointerdown', function (e) {
+    var c = edAt(e); if (!c) return;
+    edPaint = ed.rows[c[1]][c[0]] ? 0 : 1; edSay('');
+    try { edCv.setPointerCapture(e.pointerId); } catch (x) {}
+    edSet(c); e.preventDefault();
+  });
+  edCv.addEventListener('pointermove', function (e) { if (edPaint !== null) edSet(edAt(e)); });
+  function edEnd() { if (edPaint !== null) { edPaint = null; edStore(); } }
+  edCv.addEventListener('pointerup', edEnd); edCv.addEventListener('pointercancel', edEnd);
+  function edLoadRows(rows) {
+    for (var y = 0; y < ED_ROWS; y++) for (var c = 0; c < COLS; c++) ed.rows[y][c] = rows && rows[y] ? rows[y][c] : 0;
+    edDraw(); edStore();
+  }
+  $('#edClear').addEventListener('click', function () { edLoadRows(null); edSay('全部消しました'); });
+  $('#edLoad').addEventListener('click', function () {
+    var rows = edDecode(edCodeEl.value);
+    if (!rows) { edSay('このコードは読み込めません。コードを確かめてください'); return; }
+    edLoadRows(rows); edSay('読み込みました');
+  });
+  $('#edCopy').addEventListener('click', function () {
+    var code = edEncode(); if (!code) { edSay('まだブロックがありません'); return; }
+    edCodeEl.value = code;
+    function fallback() { edCodeEl.focus(); edCodeEl.select(); edSay('コードを選択しました。コピーしてください'); }
+    try { navigator.clipboard.writeText(code).then(function () { edSay('コピーしました'); }, fallback); } catch (e) { fallback(); }
+  });
+  $('#edPlay').addEventListener('click', function () {
+    var cells = edCells();
+    if (!cells.length) { edSay('最初のブロックを1つ以上置いてください'); return; }
+    for (var y = 0; y < ED_ROWS; y++) if (ed.rows[y].every(Boolean)) { edSay('ぜんぶ埋まった行があります。1マス以上あけてください'); return; }
+    CUSTOM.length = 0;
+    CUSTOM.push({ id: 'custom', name: 'じぶんのステージ', cells: cells, lv: 1, rule: '自分で作ったステージです。最初のブロックを全部消そう。' });
+    startStage('editor', 0);
+  });
+
+  /* ---------- stage collection ---------- */
+  var COL_KEY = 'block-nanahenge-collection', COL_MAX = 30, col = [], colCur = null;
+  var colMsgEl = $('#colMsg'), colNameEl = $('#colName'), colListEl = $('#colList');
+  function colSay(t) { colMsgEl.textContent = t || ''; }
+  (function colLoad() {
+    try {
+      var a = JSON.parse(localStorage.getItem(COL_KEY) || '[]');
+      if (Array.isArray(a)) col = a.filter(function (x) { return x && typeof x.code === 'string' && edDecode(x.code); })
+        .map(function (x) { return { id: String(x.id), name: String(x.name || '').slice(0, 20), code: x.code }; });
+    } catch (e) { col = []; }
+  })();
+  function colPersist() { try { localStorage.setItem(COL_KEY, JSON.stringify(col)); } catch (e) { colSay('この端末では保存できませんでした'); } }
+  function colNewId() { return 'c' + Date.now().toString(36) + Math.floor(Math.random() * 1296).toString(36); }
+  function rowsCount(rows) { var n = 0; rows.forEach(function (r) { r.forEach(function (v) { if (v) n++; }); }); return n; }
+  function colFind(id) { for (var i = 0; i < col.length; i++) if (col[i].id === id) return col[i]; return null; }
+  function colAutoName() { var n = col.length + 1; while (col.some(function (x) { return x.name === 'ステージ ' + n; })) n++; return 'ステージ ' + n; }
+  function colSetCur(id) { colCur = id && colFind(id) ? id : null; $('#colSaveOver').hidden = !colCur; colRender(); }
+  function colRender() {
+    colListEl.textContent = '';
+    if (!col.length) { var e = document.createElement('li'); e.className = 'colEmpty'; e.textContent = 'まだ保存したステージはありません。'; colListEl.appendChild(e); return; }
+    col.forEach(function (it) {
+      var rows = edDecode(it.code), li = document.createElement('li'); li.className = 'colItem' + (it.id === colCur ? ' cur' : '');
+      var nm = document.createElement('div'); nm.className = 'cn'; nm.textContent = it.name;
+      var mt = document.createElement('div'); mt.className = 'cm'; mt.textContent = 'ブロック ' + rowsCount(rows) + ' 個 ・ ' + it.code;
+      var bar = document.createElement('div'); bar.className = 'edrow';
+      function mk(label, fn) { var b = document.createElement('button'); b.type = 'button'; b.className = 'btn sm'; b.textContent = label; b.addEventListener('click', fn); bar.appendChild(b); return b; }
+      mk('あそぶ', function () { colPlay(it); });
+      mk('編集', function () { edLoadRows(edDecode(it.code)); colNameEl.value = it.name; colSetCur(it.id); colSay('「' + it.name + '」を編集中です'); window.scrollTo(0, 0); });
+      mk('コード', function () { colCopy(it.code); });
+      var del = mk('削除', function () {
+        if (del.dataset.arm) { col = col.filter(function (x) { return x.id !== it.id; }); if (colCur === it.id) colCur = null; colPersist(); $('#colSaveOver').hidden = !colCur; colRender(); colSay('削除しました'); return; }
+        del.dataset.arm = '1'; del.textContent = '本当に削除'; setTimeout(function () { if (del.isConnected) { delete del.dataset.arm; del.textContent = '削除'; } }, 3000);
+      });
+      li.appendChild(nm); li.appendChild(mt); li.appendChild(bar); colListEl.appendChild(li);
+    });
+  }
+  function colCopy(text) {
+    function fb() { colSay('コピーできませんでした。下の欄から選んでコピーしてください'); }
+    try { navigator.clipboard.writeText(text).then(function () { colSay('コピーしました'); }, fb); } catch (e) { fb(); }
+  }
+  function colPlay(it) {
+    var rows = edDecode(it.code); if (!rows) return;
+    for (var y = 0; y < rows.length; y++) if (rows[y].every(Boolean)) { colSay('ぜんぶ埋まった行があるので遊べません。編集して1マス以上あけてください'); return; }
+    var cells = []; rows.forEach(function (r, yy) { r.forEach(function (v, c) { if (v) cells.push([c, yy, 'stone']); }); });
+    CUSTOM.length = 0;
+    CUSTOM.push({ id: 'custom', name: it.name, cells: cells, lv: 1, rule: '保存したステージです。最初のブロックを全部消そう。' });
+    startStage('editor', 0);
+  }
+  function colSave(asNew) {
+    var code = edEncode(); if (!code) { colSay('まだブロックがありません'); return; }
+    var name = colNameEl.value.trim().slice(0, 20), it = asNew ? null : colFind(colCur);
+    if (it) { it.name = name || it.name; it.code = code; colNameEl.value = it.name; colPersist(); colRender(); colSay('上書き保存しました'); return; }
+    if (col.length >= COL_MAX) { colSay('保存できるのは' + COL_MAX + '個までです。いらないものを削除してください'); return; }
+    it = { id: colNewId(), name: name || colAutoName(), code: code };
+    col.unshift(it); colNameEl.value = it.name; colPersist(); colSetCur(it.id); colSay('「' + it.name + '」を保存しました');
+  }
+  $('#colSaveNew').addEventListener('click', function () { colSave(true); });
+  $('#colSaveOver').addEventListener('click', function () { colSave(false); });
+  $('#edClear').addEventListener('click', function () { colSetCur(null); });
+  $('#edLoad').addEventListener('click', function () { colSetCur(null); });
+  $('#colExport').addEventListener('click', function () {
+    if (!col.length) { colSay('保存したステージがありません'); return; }
+    var t = col.map(function (x) { return x.name + ' ' + x.code; }).join('\n');
+    $('#colBulk').value = t; colCopy(t);
+  });
+  $('#colImport').addEventListener('click', function () {
+    var lines = $('#colBulk').value.split(/\r?\n/), added = 0, bad = 0;
+    lines.forEach(function (ln) {
+      ln = ln.trim(); if (!ln) return;
+      var m = ln.match(/(K1[0-9A-Za-z\-]+)\s*$/);
+      if (!m || !edDecode(m[1])) { bad++; return; }
+      var rows = edDecode(m[1]);
+      var canon = (function () { var save = ed.rows.map(function (r) { return r.slice(); }); for (var y = 0; y < ED_ROWS; y++) for (var c = 0; c < COLS; c++) ed.rows[y][c] = rows[y] ? rows[y][c] : 0; var k = edEncode(); for (y = 0; y < ED_ROWS; y++) ed.rows[y] = save[y]; return k; })();
+      var name = ln.slice(0, m.index).replace(/[\s:：=]+$/, '').slice(0, 20);
+      if (col.some(function (x) { return x.code === canon && x.name === (name || x.name); })) return;
+      if (col.length >= COL_MAX) { bad++; return; }
+      col.push({ id: colNewId(), name: name || colAutoName(), code: canon }); added++;
+    });
+    colPersist(); colRender(); colSay(added + '個取り込みました' + (bad ? '（' + bad + '行は読み込めませんでした）' : ''));
+  });
+  colRender();
+  (function edRestore() {
+    var code = ''; try { code = localStorage.getItem(ED_KEY) || ''; } catch (e) {}
+    var rows = code ? edDecode(code) : null;
+    for (var y = 0; y < ED_ROWS; y++) for (var c = 0; c < COLS; c++) ed.rows[y][c] = rows && rows[y] ? rows[y][c] : 0;
+    edDraw(); edCodeEl.value = edEncode();
+  })();
+  window.addEventListener('resize', function () { if (!$('#paneEditor').hidden) edDraw(); });
+
+  /* ---------- puzzle editor: author a puzzle, share it as a code ---------- */
+  var PED_KEY = 'block-nanahenge-ped', PC_KEY = 'block-nanahenge-pcollection', PC_MAX = 30, PED_SEQ_MAX = 24;
+  var CUSTOMP = [], PED = { rows: [], seq: '' }, pedLast = null, pedPaint = null, pcol = [];
+  for (var pey = 0; pey < ED_ROWS; pey++) PED.rows.push(new Array(COLS).fill(0));
+  var pedCv = $('#pedCanvas'), pedSeqEl = $('#pedSeq'), pedMsgEl = $('#pedMsg'), pedCell = 30;
+  function rowsToK1(rows) {
+    var top = -1, y, c, s = '';
+    for (y = 0; y < ED_ROWS; y++) if (rows[y] && rows[y].some(Boolean)) top = y;
+    if (top < 0) return '';
+    for (y = 0; y <= top; y++) { var v = 0; for (c = 0; c < COLS; c++) if (rows[y][c]) v |= 1 << c; s += ED_ALPHA[v >> 5] + ED_ALPHA[v & 31]; }
+    return 'K1' + s;
+  }
+  /* puzzle code: P1 + rows + board + seqLen + seq + (kind, rot, x+2, y) per placed piece */
+  function pcEncode(rows, seq, moves) {
+    var k = rowsToK1(rows); if (!k || !seq.length || seq.length > PED_SEQ_MAX) return '';
+    var body = k.slice(2), s = 'P1' + ED_ALPHA[body.length / 2] + body + ED_ALPHA[seq.length] + seq;
+    moves.forEach(function (m) { s += m[0] + m[1] + ED_ALPHA[m[2] + 2] + ED_ALPHA[m[3]]; });
+    return s.replace(/(.{4})(?=.)/g, '$1-');
+  }
+  function pcNorm(ch) { return ch === 'O' ? '0' : (ch === 'I' || ch === 'L') ? '1' : ch; }
+  function pcDecode(str) {
+    var t = String(str).toUpperCase().replace(/[^0-9A-Z]/g, ''), i = 2, y, c;
+    if (t.slice(0, 2) !== 'P1') return null;
+    var nr = ED_ALPHA.indexOf(pcNorm(t[i++])); if (nr < 1 || nr > ED_ROWS) return null;
+    var rows = [];
+    for (y = 0; y < nr; y++) {
+      var a = ED_ALPHA.indexOf(pcNorm(t[i])), b = ED_ALPHA.indexOf(pcNorm(t[i + 1])); i += 2;
+      if (a < 0 || b < 0 || a > 31) return null;
+      var v = a * 32 + b, row = []; for (c = 0; c < COLS; c++) row.push((v >> c) & 1); rows.push(row);
+    }
+    var n = ED_ALPHA.indexOf(pcNorm(t[i++])); if (n < 1 || n > PED_SEQ_MAX) return null;
+    var seq = t.slice(i, i + n); i += n;
+    if (seq.length !== n || !/^[IJLOSTZ]+$/.test(seq)) return null;
+    var rest = t.slice(i); if (!rest.length || rest.length % 4 || rest.length / 4 > n) return null;
+    var moves = [];
+    for (var j = 0; j < rest.length; j += 4) {
+      var k = rest[j], r = +rest[j + 1], x = ED_ALPHA.indexOf(pcNorm(rest[j + 2])) - 2, yy = ED_ALPHA.indexOf(pcNorm(rest[j + 3]));
+      if (KINDS.indexOf(k) < 0 || !(r >= 0 && r <= 3) || x < -2 || x > 9 || yy < 0 || yy >= ROWS) return null;
+      moves.push([k, r, x, yy]);
+    }
+    return { rows: rows, seq: seq, moves: moves };
+  }
+  /* replay the stored placements on a fresh board: legal, and every starting block gets cleared */
+  function pcVerify(rows, moves) {
+    var g = [], y, i;
+    for (y = 0; y < ROWS; y++) g.push(new Array(COLS).fill(0));
+    rows.forEach(function (r, yy) { r.forEach(function (v, c) { if (v) g[ROWS - 1 - yy][c] = 2; }); });
+    for (var mi = 0; mi < moves.length; mi++) {
+      var m = moves[mi], cs = ROT[m[0]][m[1]];
+      for (i = 0; i < 4; i++) { var gx = m[2] + cs[i][0], gy = m[3] + cs[i][1]; if (gx < 0 || gx >= COLS || gy < 0 || gy >= ROWS || g[gy][gx]) return false; }
+      for (i = 0; i < 4; i++) g[m[3] + cs[i][1]][m[2] + cs[i][0]] = 1;
+      g = g.filter(function (row) { return !row.every(Boolean); });
+      while (g.length < ROWS) g.unshift(new Array(COLS).fill(0));
+    }
+    return !g.some(function (row) { return row.some(function (v) { return v === 2; }); });
+  }
+  function pcBuild(d, name, rec) {
+    var cells = [];
+    d.rows.forEach(function (r, yy) { r.forEach(function (v, c) { if (v) cells.push([c, yy, 'stone']); }); });
+    var o = { id: 'pc', name: name, rows: d.rows.length, seq: d.seq.split(''), limit: d.seq.length, puz: true, cells: cells,
+      best: rec ? d.seq.length : d.moves.length,
+      rule: 'ミノは決まった順番で ' + d.seq.length + ' 個だけ。この中で、最初のブロックを全部消そう。' + (rec ? '（作者の試しプレイです。クリアできるとコードが作れます）' : '') };
+    if (rec) { o.rec = true; o.srcRows = d.rows.map(function (r) { return r.slice(); }); }
+    else { o.sol = d.moves.map(function (m) { return [m[1], m[2], m[3]]; }); o.pseq = d.moves.map(function (m) { return m[0]; }).join(''); }
+    return o;
+  }
+  function pedSig() { return rowsToK1(PED.rows) + '|' + PED.seq; }
+  function pedSay(t) { pedMsgEl.textContent = t || ''; }
+  function pedStore() { try { localStorage.setItem(PED_KEY, JSON.stringify({ k1: rowsToK1(PED.rows), seq: PED.seq })); } catch (e) {} }
+  (function pedRestore() {
+    try {
+      var o = JSON.parse(localStorage.getItem(PED_KEY) || 'null');
+      if (o) { var rows = o.k1 ? edDecode(o.k1) : null; for (var y = 0; y < ED_ROWS; y++) for (var c = 0; c < COLS; c++) PED.rows[y][c] = rows && rows[y] ? rows[y][c] : 0; PED.seq = String(o.seq || '').replace(/[^IJLOSTZ]/g, '').slice(0, PED_SEQ_MAX); }
+    } catch (e) {}
+  })();
+  function pedDraw() {
+    var d = dpr(); pedCell = Math.max(22, Math.min(34, Math.floor(Math.min(window.innerWidth - 36, 420) / COLS)));
+    var w = pedCell * COLS, h = pedCell * ED_ROWS;
+    pedCv.style.width = w + 'px'; pedCv.style.height = h + 'px'; pedCv.width = w * d; pedCv.height = h * d;
+    var c = pedCv.getContext('2d'); c.setTransform(d, 0, 0, d, 0, 0);
+    c.fillStyle = '#0a0b11'; c.fillRect(0, 0, w, h);
+    c.strokeStyle = 'rgba(255,255,255,.08)'; c.lineWidth = 1; c.beginPath();
+    for (var x = 1; x < COLS; x++) { c.moveTo(x * pedCell + .5, 0); c.lineTo(x * pedCell + .5, h); }
+    for (var y = 1; y < ED_ROWS; y++) { c.moveTo(0, y * pedCell + .5); c.lineTo(w, y * pedCell + .5); }
+    c.stroke();
+    var n = 0;
+    for (y = 0; y < ED_ROWS; y++) for (x = 0; x < COLS; x++) if (PED.rows[y][x]) { n++; drawBlock(c, x * pedCell, (ED_ROWS - 1 - y) * pedCell, pedCell, COLORS.stone, true); }
+    $('#pedCount').textContent = 'ブロック ' + n + ' 個';
+  }
+  function pedSeqDraw() {
+    pedSeqEl.value = PED.seq;
+    $('#pedSeqView').innerHTML = PED.seq.split('').map(function (k) { return '<i style="background:' + COLORS[k] + '">' + k + '</i>'; }).join('') || '<span class="sub">まだミノがありません</span>';
+    document.querySelectorAll('#pedKeys .pk[data-k]').forEach(function (b) { b.style.background = COLORS[b.dataset.k]; });
+  }
+  (function pedKeys() {
+    var box = $('#pedKeys');
+    KINDS.forEach(function (k) { var b = document.createElement('button'); b.type = 'button'; b.className = 'pk'; b.dataset.k = k; b.textContent = k; box.appendChild(b); });
+    [['⌫ 1つ消す', 'del'], ['ミノを全部消す', 'clr']].forEach(function (p) { var b = document.createElement('button'); b.type = 'button'; b.className = 'pk fn'; b.dataset.fn = p[1]; b.textContent = p[0]; box.appendChild(b); });
+  })();
+  function pedEdited() { pedStore(); pedResultShow(); }
+  $('#pedKeys').addEventListener('click', function (e) {
+    var b = e.target.closest('.pk'); if (!b) return; pedSay('');
+    if (b.dataset.k) { if (PED.seq.length >= PED_SEQ_MAX) { pedSay('ミノは' + PED_SEQ_MAX + '個までです'); return; } PED.seq += b.dataset.k; }
+    else if (b.dataset.fn === 'del') PED.seq = PED.seq.slice(0, -1);
+    else PED.seq = '';
+    pedSeqDraw(); pedEdited();
+  });
+  pedSeqEl.addEventListener('input', function () { PED.seq = pedSeqEl.value.toUpperCase().replace(/[^IJLOSTZ]/g, '').slice(0, PED_SEQ_MAX); pedSeqDraw(); pedEdited(); });
+  function pedAt(e) {
+    var r = pedCv.getBoundingClientRect();
+    var x = Math.floor((e.clientX - r.left) / r.width * COLS), yy = Math.floor((e.clientY - r.top) / r.height * ED_ROWS);
+    return (x < 0 || x >= COLS || yy < 0 || yy >= ED_ROWS) ? null : [x, ED_ROWS - 1 - yy];
+  }
+  function pedSet(c) { if (c && PED.rows[c[1]][c[0]] !== pedPaint) { PED.rows[c[1]][c[0]] = pedPaint; pedDraw(); } }
+  pedCv.addEventListener('pointerdown', function (e) {
+    var c = pedAt(e); if (!c) return;
+    pedPaint = PED.rows[c[1]][c[0]] ? 0 : 1; pedSay('');
+    try { pedCv.setPointerCapture(e.pointerId); } catch (x) {}
+    pedSet(c); e.preventDefault();
+  });
+  pedCv.addEventListener('pointermove', function (e) { if (pedPaint !== null) pedSet(pedAt(e)); });
+  function pedEnd() { if (pedPaint !== null) { pedPaint = null; pedEdited(); } }
+  pedCv.addEventListener('pointerup', pedEnd); pedCv.addEventListener('pointercancel', pedEnd);
+  $('#pedClear').addEventListener('click', function () {
+    for (var y = 0; y < ED_ROWS; y++) PED.rows[y].fill(0);
+    pedDraw(); pedEdited(); pedSay('盤面を消しました');
+  });
+  function pedCheck(rows, seq) {
+    var n = 0, y;
+    rows.forEach(function (r) { r.forEach(function (v) { if (v) n++; }); });
+    if (!n) return '最初のブロックを1つ以上置いてください';
+    for (y = 0; y < rows.length; y++) if (rows[y].every(Boolean)) return 'ぜんぶ埋まった行があります。1マス以上あけてください';
+    if (!seq.length) return 'ミノの順番を決めてください';
+    return '';
+  }
+  $('#pedPlay').addEventListener('click', function () {
+    var bad = pedCheck(PED.rows, PED.seq); if (bad) { pedSay(bad); return; }
+    CUSTOMP.length = 0; CUSTOMP.push(pcBuild({ rows: PED.rows, seq: PED.seq, moves: [] }, 'じぶんのパズル', true));
+    startStage('pcode', 0);
+  });
+  function pedCleared(s, moves) {
+    var sig = rowsToK1(s.srcRows) + '|' + s.seq.join('');
+    if (pedLast && pedLast.sig === sig && pedLast.n <= moves.length) return;
+    pedLast = { sig: sig, n: moves.length, code: pcEncode(s.srcRows, s.seq.join(''), moves) };
+  }
+  function pedResultShow() {
+    var ok = pedLast && pedLast.sig === pedSig() && pedLast.code;
+    $('#pedResult').hidden = !ok;
+    if (ok) {
+      $('#pedCode').value = pedLast.code;
+      $('#pedResultInfo').textContent = 'ミノ ' + PED.seq.length + ' 個のうち ' + pedLast.n + ' 個で解けました。★3は「' + pedLast.n + ' 個以内」になります。もっと少ない手で解けたら、もう一度「あそんで確かめる」で更新できます。';
+    }
+  }
+  function pedCopy(text, say) {
+    function fb() { say('コピーできませんでした。コードを選んでコピーしてください'); }
+    try { navigator.clipboard.writeText(text).then(function () { say('コピーしました'); }, fb); } catch (e) { fb(); }
+  }
+  $('#pedCopy').addEventListener('click', function () { pedCopy($('#pedCode').value, pedSay); });
+
+  /* collection of puzzles */
+  (function pcLoad() {
+    try {
+      var a = JSON.parse(localStorage.getItem(PC_KEY) || '[]');
+      if (Array.isArray(a)) pcol = a.filter(function (x) { var d = x && typeof x.code === 'string' && pcDecode(x.code); return d && pcVerify(d.rows, d.moves); })
+        .map(function (x) { return { id: String(x.id), name: String(x.name || '').slice(0, 20), code: x.code }; });
+    } catch (e) { pcol = []; }
+  })();
+  function pcPersist() { try { localStorage.setItem(PC_KEY, JSON.stringify(pcol)); } catch (e) { pcSay('この端末では保存できませんでした'); } }
+  function pcSay(t) { $('#pcMsg').textContent = t || ''; }
+  function pcAutoName() { var n = pcol.length + 1; while (pcol.some(function (x) { return x.name === 'パズル ' + n; })) n++; return 'パズル ' + n; }
+  function pcAdd(code, name) {
+    var d = pcDecode(code);
+    if (!d) return 'このコードは読み込めません。コードを確かめてください';
+    if (!pcVerify(d.rows, d.moves)) return 'このコードの手順では、パズルを解けません';
+    var canon = pcEncode(d.rows, d.seq, d.moves);
+    if (pcol.some(function (x) { return x.code === canon; })) return 'このパズルはもう追加されています';
+    if (pcol.length >= PC_MAX) return '保存できるのは' + PC_MAX + '個までです。いらないものを削除してください';
+    pcol.unshift({ id: colNewId(), name: (name || '').trim().slice(0, 20) || pcAutoName(), code: canon });
+    pcPersist(); pcRender(); return '';
+  }
+  function pcPlay(code, name) {
+    var d = pcDecode(code);
+    if (!d) { pcSay('このコードは読み込めません。コードを確かめてください'); return; }
+    for (var y = 0; y < d.rows.length; y++) if (d.rows[y].every(Boolean)) { pcSay('このコードは、ぜんぶ埋まった行があるので遊べません'); return; }
+    if (!pcVerify(d.rows, d.moves)) { pcSay('このコードの手順では、パズルを解けません'); return; }
+    var full = []; for (y = 0; y < ED_ROWS; y++) full.push(d.rows[y] || new Array(COLS).fill(0));
+    d.rows = full;
+    CUSTOMP.length = 0; CUSTOMP.push(pcBuild(d, name || 'もらったパズル', false));
+    startStage('pcode', 0);
+  }
+  function pcRender() {
+    var ul = $('#pcList'); ul.textContent = '';
+    if (!pcol.length) { var e = document.createElement('li'); e.className = 'colEmpty'; e.textContent = 'まだパズルはありません。'; ul.appendChild(e); return; }
+    pcol.forEach(function (it) {
+      var d = pcDecode(it.code), li = document.createElement('li'); li.className = 'colItem';
+      var nm = document.createElement('div'); nm.className = 'cn'; nm.textContent = it.name;
+      var mt = document.createElement('div'); mt.className = 'cm'; mt.textContent = 'ミノ ' + d.seq.length + ' 個 ・ ★3は ' + d.moves.length + ' 個以内';
+      var bar = document.createElement('div'); bar.className = 'edrow';
+      function mk(label, fn) { var b = document.createElement('button'); b.type = 'button'; b.className = 'btn sm'; b.textContent = label; b.addEventListener('click', fn); bar.appendChild(b); return b; }
+      mk('あそぶ', function () { pcPlay(it.code, it.name); });
+      mk('編集', function () {
+        var full = []; for (var y = 0; y < ED_ROWS; y++) full.push(d.rows[y] ? d.rows[y].slice() : new Array(COLS).fill(0));
+        PED.rows = full; PED.seq = d.seq; pedDraw(); pedSeqDraw(); pedEdited(); pedSay('「' + it.name + '」を読み込みました。手順は引き継がれないので、もう一度クリアして確かめます'); window.scrollTo(0, 0);
+      });
+      mk('コード', function () { pedCopy(it.code, pcSay); });
+      var del = mk('削除', function () {
+        if (del.dataset.arm) { pcol = pcol.filter(function (x) { return x.id !== it.id; }); pcPersist(); pcRender(); pcSay('削除しました'); return; }
+        del.dataset.arm = '1'; del.textContent = '本当に削除'; setTimeout(function () { if (del.isConnected) { delete del.dataset.arm; del.textContent = '削除'; } }, 3000);
+      });
+      li.appendChild(nm); li.appendChild(mt); li.appendChild(bar); ul.appendChild(li);
+    });
+  }
+  $('#pedSave').addEventListener('click', function () {
+    if (!pedLast || !pedLast.code) return;
+    var r = pcAdd(pedLast.code, $('#pedName').value); pedSay(r || '保存しました'); if (!r) $('#pedName').value = '';
+  });
+  $('#pcPlay').addEventListener('click', function () { pcSay(''); pcPlay($('#pcIn').value, $('#pcName').value.trim().slice(0, 20)); });
+  $('#pcAdd').addEventListener('click', function () { var r = pcAdd($('#pcIn').value, $('#pcName').value); pcSay(r || '追加しました'); if (!r) { $('#pcIn').value = ''; $('#pcName').value = ''; } });
+  function pedRefresh() { pedDraw(); pedSeqDraw(); pedResultShow(); pcRender(); pedSay(''); pcSay(''); }
+  window.addEventListener('resize', function () { if (!$('#panePEd').hidden) pedDraw(); });
+
+  /* ---------- backup: records, collections and settings in one text ---------- */
+  var BK_TAG = 'KPBK1:', bkMode = 'merge';
+  function bkRead(key, def) { try { var v = JSON.parse(localStorage.getItem(key)); return v == null ? def : v; } catch (e) { return def; } }
+  function bkMake() {
+    var o = { v: 1, save: bkRead(SAVE_KEY, {}), col: bkRead(COL_KEY, []), pcol: bkRead(PC_KEY, []), cfg: bkRead(CFG_KEY, {}) };
+    return BK_TAG + btoa(unescape(encodeURIComponent(JSON.stringify(o))));
+  }
+  function bkParse(t) {
+    t = String(t).replace(/\s+/g, ''); var i = t.indexOf(BK_TAG); if (i < 0) return null;
+    try { var o = JSON.parse(decodeURIComponent(escape(atob(t.slice(i + BK_TAG.length))))); return o && o.v === 1 ? o : null; } catch (e) { return null; }
+  }
+  function bkMergeSave(cur, inc) {
+    var out = {}; Object.keys(cur).forEach(function (k) { out[k] = cur[k]; });
+    Object.keys(inc).forEach(function (id) {
+      var a = out[id], b = inc[id];
+      if (!a) { out[id] = b; return; }
+      if (typeof a !== 'object' || typeof b !== 'object') return;
+      var r = {}; Object.keys(a).forEach(function (f) { r[f] = a[f]; });
+      Object.keys(b).forEach(function (f) {
+        var x = r[f], y = b[f];
+        if (typeof y !== 'number') { if (x == null) r[f] = y; return; }
+        if (typeof x !== 'number') { r[f] = y; return; }
+        r[f] = (f === 'time' || f === 'used') ? Math.min(x, y) : Math.max(x, y);
+      });
+      out[id] = r;
+    });
+    return out;
+  }
+  function bkMergeList(cur, inc, ok, max, over) {
+    var out = over ? [] : cur.slice(), added = 0;
+    (Array.isArray(inc) ? inc : []).forEach(function (x) {
+      if (!x || typeof x.code !== 'string' || !ok(x.code) || out.length >= max) return;
+      if (out.some(function (y) { return y.code === x.code; })) return;
+      out.push({ id: String(x.id || colNewId()), name: String(x.name || '').slice(0, 20), code: x.code }); added++;
+    });
+    return { list: out, added: added };
+  }
+  function bkApply(o, over) {
+    var sv = over ? (o.save && typeof o.save === 'object' ? o.save : {}) : bkMergeSave(bkRead(SAVE_KEY, {}), o.save && typeof o.save === 'object' ? o.save : {});
+    var c = bkMergeList(bkRead(COL_KEY, []), o.col, function (cd) { return !!edDecode(cd); }, COL_MAX, over);
+    var p = bkMergeList(bkRead(PC_KEY, []), o.pcol, function (cd) { var d = pcDecode(cd); return !!d && pcVerify(d.rows, d.moves); }, PC_MAX, over);
+    localStorage.setItem(SAVE_KEY, JSON.stringify(sv));
+    localStorage.setItem(COL_KEY, JSON.stringify(c.list));
+    localStorage.setItem(PC_KEY, JSON.stringify(p.list));
+    if (over && o.cfg && typeof o.cfg === 'object') localStorage.setItem(CFG_KEY, JSON.stringify(o.cfg));
+    return { stages: c.added, puzzles: p.added };
+  }
+  function bkSay(t) { $('#bkMsg').textContent = t || ''; }
+  $('#bkCopy').addEventListener('click', function () {
+    var t = bkMake(); $('#bkText').value = t;
+    function fb() { $('#bkText').focus(); $('#bkText').select(); bkSay('コピーできませんでした。上の欄を選んでコピーしてください'); }
+    try { navigator.clipboard.writeText(t).then(function () { bkSay('コピーしました。安全な場所（メモなど）に貼って保管してください'); }, fb); } catch (e) { fb(); }
+  });
+  $('#optBk').addEventListener('click', function (e) {
+    var b = e.target.closest('.opt'); if (!b) return; bkMode = b.dataset.bk;
+    document.querySelectorAll('#optBk .opt').forEach(function (x) { x.setAttribute('aria-pressed', String(x.dataset.bk === bkMode)); });
+    $('#bkImport').textContent = '取り込む'; delete $('#bkImport').dataset.arm; bkSay('');
+  });
+  $('#bkImport').addEventListener('click', function () {
+    var btn = this, o = bkParse($('#bkText').value);
+    if (!o) { bkSay('バックアップの文章が読み込めません。「KPBK1:」から最後までを貼ってください'); return; }
+    if (bkMode === 'over' && !btn.dataset.arm) { btn.dataset.arm = '1'; btn.textContent = '本当に上書きする'; bkSay('今のデータがバックアップの内容に置き換わります。よければもう一度押してください'); return; }
+    try {
+      var r = bkApply(o, bkMode === 'over');
+      bkSay('取り込みました（ステージ ' + r.stages + ' 個、パズル ' + r.puzzles + ' 個を追加）。画面を読み込み直します');
+      setTimeout(function () { location.reload(); }, 1000);
+    } catch (e) { bkSay('保存できませんでした。この端末では取り込めません'); }
+  });
+
+  function refreshMenu() {
+    if (mode === 'editor') { edDraw(); edSay(''); }
+    if (mode === 'pcode') pedRefresh();
+    var items = stageList.querySelectorAll('.stage');
+    STAGES.forEach(function (s, i) {
+      var d = items[i].querySelector('.done'), rec = save[s.id];
+      if (rec) { d.hidden = false; d.textContent = rec.time ? 'クリア済み ・ ベスト ' + fmtTimeP(rec.time) : 'クリア済み'; }
+      else d.hidden = true;
+    });
+    var nextMain = STAGES.length;
+    for (var m = 0; m < STAGES.length; m++) { if (!save[STAGES[m].id]) { nextMain = m; break; } }
+    STAGES.forEach(function (s, i) { items[i].parentNode.hidden = i > nextMain; });
+    var tiles = letterList.querySelectorAll('.letter'), n = 0;
+    EXTRA.forEach(function (s, i) {
+      var done = !!save[s.id]; if (done) n++;
+      tiles[i].classList.toggle('done', done);
+      var st = tiles[i].querySelector('.st');
+      st.style.visibility = done ? 'visible' : 'hidden';
+      st.textContent = done && save[s.id].time ? fmtTimeP(save[s.id].time) : 'クリア済み';
+    });
+    $('#extraCount').textContent = n;
+    $('#goNext').textContent = n >= EXTRA.length ? 'もう一度 A から' : (n ? 'つづきから ' + EXTRA[firstOpen()].name : 'A からはじめる');
+    var pitems = puzList.querySelectorAll('.stage'), pst = 0, pdone = 0;
+    PUZZLES.forEach(function (s, i) {
+      var d = pitems[i].querySelector('.done'), rec = save[s.id];
+      if (rec && rec.stars) { pdone++; pst += rec.stars; d.hidden = false; d.innerHTML = starsHtml(rec.stars); }
+      else d.hidden = true;
+    });
+    var nextPuz = PUZZLES.length;
+    for (var q = 0; q < PUZZLES.length; q++) { if (!(save[PUZZLES[q].id] && save[PUZZLES[q].id].stars)) { nextPuz = q; break; } }
+    PUZZLES.forEach(function (s, i) { var c = save[s.id] && save[s.id].stars; pitems[i].parentNode.hidden = !(i <= nextPuz || c); });
+    $('#puzProg').textContent = pdone >= PUZZLES.length ? '全クリア ★' + pst : pdone + ' / ' + PUZZLES.length + ' クリア';
+    var cleared = STAGES.filter(function (s) { return save[s.id]; }).length;
+    $('#mainProg').textContent = cleared >= STAGES.length ? '全クリア' : cleared + ' / ' + STAGES.length + ' クリア';
+    $('#extraProg').textContent = n >= EXTRA.length ? '全クリア' : n + ' / ' + EXTRA.length + ' クリア';
+    var nr = save.normal;
+    $('#normalProg').textContent = nr ? 'ベスト ' + Number(nr.score || 0).toLocaleString('ja-JP') : '';
+    $('#normalBest').textContent = nr ? 'ベストスコア ' + Number(nr.score || 0).toLocaleString('ja-JP') + ' ・ 最高 ' + (nr.lines || 0) + ' ライン' : 'まだ記録がありません';
+  }
+  refreshMenu();
+
+  (function drawLogo() {
+    var cv = $('#logo'), S = 10, w = 7 * S, h = 8 * S, d = dpr();
+    cv.style.width = w + 'px'; cv.style.height = h + 'px';
+    cv.width = w * d; cv.height = h * d;
+    var c = cv.getContext('2d'); c.setTransform(d, 0, 0, d, 0, 0);
+    CAT_PAT.forEach(function (row, r) {
+      row.split('').forEach(function (ch, x) { if (CAT_KEY[ch]) { c.fillStyle = COLORS[CAT_KEY[ch]]; c.fillRect(x * S, r * S, S, S); } });
+    });
+  })();
+
+  /* ---------- game state ---------- */
+  var G = null, stageIdx = 0, mode = 'main', LIST = STAGES;
+  function listFor(m) { return m === 'extra' ? EXTRA : (m === 'normal' ? NORMAL : (m === 'puzzle' ? PUZZLES : (m === 'editor' ? CUSTOM : (m === 'pcode' ? CUSTOMP : STAGES)))); }
+  var cell = 28, cell2 = 16, bctx = null, hctx = null, nctx = [];
+  var bcv = $('#board'), hcv = $('#hold'), ncv = [$('#next0'), $('#next1'), $('#next2')];
+  var overlay = $('#overlay');
+  var held = { left: false, right: false, down: false }, hdir = 0, hT = 0, hA = 0;
+
+  function layout() {
+    var W = document.documentElement.clientWidth || window.innerWidth, H = window.innerHeight;
+    if (window.visualViewport) H = Math.min(H, Math.round(window.visualViewport.height));
+    var touch = (window.matchMedia && matchMedia('(pointer: coarse)').matches) || W < 640;
+    play.classList.toggle('touch', touch);
+    var land = touch && W > H && H < 520;
+    play.classList.toggle('land', land);
+    document.documentElement.classList.toggle('playing', touch && !play.hidden);
+    if (land) { if (G && G.state === 'play') pause(); return; }
+    var avail;
+    if (touch) {
+      /* board height = what is left under the header once the button pad is reserved */
+      var rowTop = $('.stage-row').getBoundingClientRect().top;
+      var rootPad = parseFloat(getComputedStyle(document.documentElement).paddingBottom) || 0;
+      avail = H - rowTop - ($('#pad').offsetHeight + 10) - rootPad - 6 - 4;
+    } else avail = H - 120 - 4;
+    var c = 36;
+    function fitW(n) { return 10 * n + 4 + 12 + (4 * Math.round(n * 0.6) + 2) + 32 <= W; }
+    function fitH(n) { return 20 * n <= avail; }
+    while (c > 12 && (!fitW(c) || !fitH(c))) c--;
+    cell = c; cell2 = Math.round(c * 0.6);
+    bctx = fitCanvas(bcv, 10 * cell, 20 * cell);
+    hctx = fitCanvas(hcv, 4 * cell2, 2 * cell2);
+    nctx = ncv.map(function (cv) { return fitCanvas(cv, 4 * cell2, 2 * cell2); });
+    $('#side').style.width = (4 * cell2 + 2) + 'px';
+    if (G) G.sideDirty = true;
+  }
+
+  function countInit() {
+    var n = 0;
+    for (var y = 0; y < ROWS; y++) for (var x = 0; x < COLS; x++) { var c = G.grid[y][x]; if (c && c.i) n++; }
+    return n;
+  }
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function fillQueue() { if (G.puz) return; while (G.queue.length < 7) G.queue = G.queue.concat(shuffle(KINDS.slice())); }
+  function nextKind() { fillQueue(); var k = G.queue.shift(); fillQueue(); return k; }
+  function applyPuzUI() {
+    var pz = mode === 'puzzle' || mode === 'pcode';
+    play.classList.toggle('puz', pz);
+    $('#undoBtn').hidden = !pz;
+    $('#lblLines').textContent = pz ? 'ミノ' : 'ライン';
+  }
+
+  function newGame() {
+    var s = LIST[stageIdx];
+    var grid = [];
+    for (var y = 0; y < ROWS; y++) grid.push(new Array(COLS).fill(null));
+    s.cells.forEach(function (p) { grid[ROWS - 1 - p[1]][p[0]] = { k: p[2], i: true }; });
+    G = {
+      grid: grid, p: null, hold: null, canHold: true, queue: [], score: 0, lines: 0, level: s.lv || 1, pieces: 0, time: 0,
+      state: 'ready', acc: 0, lock: 0, resets: 0, lowest: 0, clearRows: [], clearT: 0,
+      total: s.cells.length, remain: s.cells.length, sideDirty: true, endless: !!s.endless,
+      puz: !!s.puz, seq: s.seq || null, limit: s.limit || 0, hist: [], dev: -1, hint: null, rec: s.rec ? [] : null
+    };
+    if (G.puz) G.queue = s.seq.slice();
+    applyPuzUI();
+    fillQueue(); clearInput(); hudKey = '';
+    $('#stageName').textContent = (mode === 'extra' ? 'エクストラ ' : '') + s.name;
+    showOverlay('ready');
+    bgmSync();   /* moving on to the next stage may change the track */
+  }
+
+  function startStage(m, i) {
+    mode = m; LIST = listFor(m);
+    stageIdx = i; menu.hidden = true; play.hidden = false; bgmSync();
+    applyPuzUI(); window.scrollTo(0, 0); layout(); newGame();
+    /* phone browsers settle their viewport height a moment after the screen changes */
+    setTimeout(function () { if (!play.hidden) layout(); }, 250);
+  }
+  function toMenu() {
+    hideOverlay(); clearInput(); G = null;
+    document.documentElement.classList.remove('playing');
+    play.hidden = true; menu.hidden = false; setMode(mode); refreshMenu(); showView('mode'); bgmSync();
+  }
+
+  /* ---------- core rules ---------- */
+  function collide(k, r, x, y) {
+    var cs = ROT[k][r];
+    for (var i = 0; i < 4; i++) {
+      var gx = x + cs[i][0], gy = y + cs[i][1];
+      if (gx < 0 || gx >= COLS || gy >= ROWS) return true;
+      if (gy >= 0 && G.grid[gy][gx]) return true;
+    }
+    return false;
+  }
+  function fits(p, dx, dy) { return !collide(p.k, p.r, p.x + dx, p.y + dy); }
+
+  function spawn(kind) {
+    clearHint();
+    var k = kind || nextKind();
+    if (!k) { G.p = null; gameOver(); return; }
+    var n = BASE[k].length;
+    var p = { k: k, r: 0, x: Math.floor((COLS - n) / 2), y: 0 };
+    G.acc = 0; G.lock = 0; G.resets = 0; G.lowest = 0; G.canHold = true; G.sideDirty = true;
+    if (collide(k, 0, p.x, p.y)) { G.p = null; gameOver(); return; }
+    G.p = p;
+    if (fits(p, 0, 1)) p.y++;
+  }
+
+  function afterMove() {
+    if (!fits(G.p, 0, 1)) { if (G.resets < 15) { G.lock = 0; G.resets++; } }
+    else G.lock = 0;
+  }
+  function tryMove(dx) { if (G.p && fits(G.p, dx, 0)) { G.p.x += dx; afterMove(); SFX.move(); return true; } return false; }
+  function stepDown() { G.p.y++; if (G.p.y > G.lowest) { G.lowest = G.p.y; G.resets = 0; } }
+  function softStep() { if (G.p && fits(G.p, 0, 1)) { stepDown(); G.score += 1; G.acc = 0; } }
+  function rotate(d) {
+    var p = G.p; if (!p || p.k === 'O') return;
+    var to = (p.r + d + 4) % 4, tbl = (p.k === 'I' ? KI : KJ)['' + p.r + to];
+    for (var i = 0; i < tbl.length; i++) {
+      var kx = tbl[i][0], ky = tbl[i][1];
+      if (!collide(p.k, to, p.x + kx, p.y - ky)) { p.r = to; p.x += kx; p.y -= ky; afterMove(); SFX.rotate(); return; }
+    }
+  }
+  function hardDrop() {
+    var p = G.p; if (!p) return;
+    var n = 0; while (fits(p, 0, 1)) { p.y++; n++; }
+    G.score += 2 * n; SFX.drop(); quietLand = true; lock();
+  }
+  var quietLand = false;
+  function clearHint() { if (G) G.hint = null; var m = $('#hintMsg'); if (m) m.hidden = true; }
+  /* puzzle hint: the next step of the stored solution, valid while the player has followed it */
+  function cellKey(cells) { return cells.map(function (c) { return c[0] + ',' + c[1]; }).sort().join('|'); }
+  function expectedMove(step) {
+    var s = LIST[stageIdx]; if (!s.sol || step >= s.sol.length) return null;
+    var k = s.pseq ? s.pseq[step] : G.seq[step], m = s.sol[step], r = m[0], x = m[1], y = 0, slide = false;
+    if (collide(k, r, x, 0)) return null;
+    while (!collide(k, r, x, y + 1)) y++;
+    if (m.length > 2 && m[2] !== y) { if (collide(k, r, x, m[2])) return null; y = m[2]; slide = true; }
+    return { k: k, r: r, x: x, slide: slide, cells: ROT[k][r].map(function (c) { return [x + c[0], y + c[1]]; }) };
+  }
+  function hint() {
+    if (!G || !G.puz || G.state !== 'play' || !G.p) return;
+    var p = G.p, msg, ex;
+    G.hint = null;
+    if (G.dev >= 0) {
+      msg = '手順からずれています。「戻す」を ' + (G.pieces - G.dev) + ' 回押すと、手順どおりに進められます。';
+    } else if (!(ex = expectedMove(G.pieces))) {
+      msg = 'この盤面のヒントはありません。';
+    } else if (p.k !== ex.k) {
+      msg = 'この手では「' + ex.k + '」を置きます。ホールドで入れ替わっているので、もう一度ホールドで戻してください。';
+    } else {
+      G.hint = ex;
+      var rot = (ex.r - p.r + 4) % 4, dx = ex.x - p.x, c0 = 99, c1 = -1;
+      ex.cells.forEach(function (c) { c0 = Math.min(c0, c[0] + 1); c1 = Math.max(c1, c[0] + 1); });
+      if (ex.slide) {
+        var s0 = 99, s1 = -1; ex.cells.forEach(function (c) { s0 = Math.min(s0, c[0] + 1); s1 = Math.max(s1, c[0] + 1); });
+        msg = '光る枠（' + (s0 === s1 ? s0 + '列目' : s0 + '〜' + s1 + '列目') + '）が置き場所です。上から落とすだけでは届かないので、途中で横にずらして滑り込ませます。';
+      } else
+      msg = '今の位置から、' +
+        (rot === 0 ? '' : rot === 3 ? '左回転1回、' : '右回転' + rot + '回、') +
+        (dx === 0 ? '横には動かさず、' : (dx > 0 ? '右へ' : '左へ') + Math.abs(dx) + '回動かして、') +
+        'ハードドロップ。光る枠が置き場所（' + (c0 === c1 ? c0 + '列目' : c0 + '〜' + c1 + '列目') + '）です。';
+    }
+    var el = $('#hintMsg'); el.textContent = msg; el.hidden = false; SFX.rotate();
+  }
+  /* puzzle: take back the last placed piece; the piece in hand returns to the front of the queue */
+  function undo() {
+    if (!G || !G.puz || !G.hist.length || (G.state !== 'play' && G.state !== 'over')) return false;
+    var h = G.hist.pop();
+    if (G.rec) G.rec.length = h.pieces;
+    G.grid = h.grid; G.queue = h.queue; G.pieces = h.pieces; G.hold = h.hold; G.dev = h.dev; G.remain = countInit();
+    G.p = null; G.state = 'play'; clearInput(); hideOverlay(); SFX.hold(); spawn();
+    return true;
+  }
+  function doHold() {
+    if (!G.p || !G.canHold) return;
+    if (G.puz && !G.hold && !G.queue.length) return;   /* nothing left to draw */
+    SFX.hold();
+    var k = G.p.k;
+    if (G.hold) { var h = G.hold; G.hold = k; spawn(h); } else { G.hold = k; spawn(); }
+    if (G.state === 'play') G.canHold = false;
+    G.sideDirty = true;
+  }
+
+  function lock() {
+    var p = G.p, cs = ROT[p.k][p.r], out = true;
+    if (G.puz) {
+      G.hist.push({ grid: G.grid.map(function (r) { return r.slice(); }), queue: [p.k].concat(G.queue), pieces: G.pieces, hold: G.hold, dev: G.dev });
+      if (G.dev < 0) {
+        var ex = expectedMove(G.pieces);
+        var mine = cellKey(cs.map(function (c) { return [p.x + c[0], p.y + c[1]]; }));
+        if (!ex || p.k !== ex.k || cellKey(ex.cells) !== mine) G.dev = G.pieces;
+      }
+    }
+    if (G.rec) G.rec[G.pieces] = [p.k, p.r, p.x, p.y];
+    for (var i = 0; i < 4; i++) {
+      var gx = p.x + cs[i][0], gy = p.y + cs[i][1];
+      if (gy >= 0) G.grid[gy][gx] = { k: p.k, i: false };
+      if (gy >= HID) out = false;
+    }
+    G.pieces++; G.p = null;
+    var full = [];
+    for (var y = 0; y < ROWS; y++) { if (G.grid[y].every(function (c) { return c; })) full.push(y); }
+    if (quietLand) quietLand = false; else if (!full.length) SFX.land();
+    if (full.length) {
+      G.state = 'clearing'; G.clearRows = full; G.clearT = 0;
+      var hitInit = full.some(function (y) { return G.grid[y].some(function (c) { return c && c.i; }); });
+      SFX.lines(full.length);
+      if (hitInit) SFX.init();
+    }
+    else if (out || (G.puz && G.pieces >= G.limit)) gameOver();
+    else spawn();
+  }
+
+  function finishClear() {
+    var rows = G.clearRows, n = rows.length;
+    G.grid = G.grid.filter(function (_, y) { return rows.indexOf(y) < 0; });
+    while (G.grid.length < ROWS) G.grid.unshift(new Array(COLS).fill(null));
+    G.lines += n;
+    G.score += [0, 100, 300, 500, 800][n] * G.level;
+    G.level = G.endless ? 1 + Math.floor(G.lines / 10) : (LIST[stageIdx].lv || 1) + Math.floor(G.lines / 6);
+    G.clearRows = [];
+    G.remain = countInit();
+    if (!G.endless && G.remain === 0) { stageClear(); return; }
+    if (G.puz && G.pieces >= G.limit) { gameOver(); return; }
+    G.state = 'play'; spawn();
+  }
+
+  function gameOver() {
+    G.state = 'over'; G.p = null; clearInput(); SFX.over();
+    if (G.endless) {
+      var rec = save.normal || {};
+      G.prevScore = rec.score || 0;
+      G.newBest = G.score > G.prevScore;
+      if (G.newBest) rec.score = G.score;
+      rec.lines = Math.max(rec.lines || 0, G.lines);
+      save.normal = rec; writeSave(save);
+    }
+    showOverlay('over');
+  }
+  function stageClear() {
+    G.state = 'clear'; G.p = null; clearInput();
+    if (mode === 'pcode') {
+      var cs0 = LIST[stageIdx];
+      G.stars = cs0.rec ? 3 : (G.pieces <= cs0.best ? 3 : (G.pieces <= cs0.best + 1 ? 2 : 1));
+      if (cs0.rec) pedCleared(cs0, G.rec.slice(0, G.pieces));
+      SFX.clear(); showOverlay('clear'); return;
+    }
+    if (mode === 'editor') { SFX.clear(); showOverlay('clear'); return; }
+    if (G.puz) {
+      var ps = LIST[stageIdx], prec = save[ps.id] || {};
+      G.stars = G.pieces <= ps.best ? 3 : (G.pieces <= ps.best + 1 ? 2 : 1);
+      G.prevStars = prec.stars || 0; G.newBest = G.stars > G.prevStars;
+      prec.stars = Math.max(G.prevStars, G.stars); prec.used = Math.min(prec.used || 99, G.pieces);
+      save[ps.id] = prec; writeSave(save);
+      SFX.clear(); showOverlay('clear'); return;
+    }
+    var id = LIST[stageIdx].id, rec = save[id] || { best: 0 };
+    G.prevBest = rec.time || null;
+    G.newBest = !rec.time || G.time < rec.time;
+    if (G.newBest) rec.time = Math.round(G.time);
+    save[id] = rec; writeSave(save);
+    SFX.clear(); if (G.newBest && G.prevBest) SFX.best();
+    showOverlay('clear');
+  }
+
+  function gravityMs(lv) { return Math.max(60, 820 - (lv - 1) * 75) * SPEED_MUL[CFG.speed]; }
+  function update(dt) {
+    G.time += dt;
+    if (hdir) {
+      hT += dt;
+      if (hT >= DAS) { hA += dt; while (hA >= ARR) { hA -= ARR; tryMove(hdir); } }
+    }
+    var p = G.p; if (!p) return;
+    if (!fits(p, 0, 1)) {
+      G.lock += dt;
+      if (G.lock >= LOCK_MS) lock();
+    } else {
+      G.lock = 0; G.acc += dt;
+      var iv = held.down ? Math.min(40, gravityMs(G.level)) : gravityMs(G.level);
+      while (G.acc >= iv && fits(p, 0, 1)) { stepDown(); G.acc -= iv; if (held.down) G.score += 1; }
+      if (!fits(p, 0, 1)) G.acc = 0;
+    }
+  }
+
+  /* ---------- input ---------- */
+  function press(a) {
+    if (!G || G.state !== 'play') return;
+    switch (a) {
+      case 'left': held.left = true; hdir = -1; hT = 0; hA = 0; tryMove(-1); break;
+      case 'right': held.right = true; hdir = 1; hT = 0; hA = 0; tryMove(1); break;
+      case 'down': held.down = true; softStep(); break;
+      case 'rotR': rotate(1); break;
+      case 'rotL': rotate(-1); break;
+      case 'drop': hardDrop(); break;
+      case 'hold': doHold(); break;
+      case 'undo': undo(); break;
+      case 'hint': hint(); break;
+    }
+  }
+  function release(a) {
+    if (a === 'left') { held.left = false; if (hdir === -1) { hdir = held.right ? 1 : 0; hT = 0; hA = 0; } }
+    else if (a === 'right') { held.right = false; if (hdir === 1) { hdir = held.left ? -1 : 0; hT = 0; hA = 0; } }
+    else if (a === 'down') held.down = false;
+  }
+  function clearInput() { held.left = held.right = held.down = false; hdir = 0; hT = 0; hA = 0; }
+
+  var KEYMAP = {
+    ArrowLeft: 'left', KeyA: 'left', ArrowRight: 'right', KeyD: 'right', ArrowDown: 'down', KeyS: 'down',
+    ArrowUp: 'rotR', KeyW: 'rotR', KeyX: 'rotR', KeyZ: 'rotL', Space: 'drop',
+    KeyC: 'hold', KeyU: 'undo', KeyH: 'hint', ShiftLeft: 'hold', ShiftRight: 'hold'
+  };
+  function pause() { if (G && G.state === 'play') { G.state = 'pause'; clearInput(); showOverlay('pause'); } }
+  function resume() { if (G && G.state === 'pause') { hideOverlay(); G.state = 'play'; } }
+  function begin() { hideOverlay(); G.state = 'play'; SFX.start(); spawn(); }
+  function restart() { newGame(); begin(); }
+
+  window.addEventListener('keydown', function (e) {
+    if (play.hidden || !G) return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    var st = G.state;
+    if (st !== 'play' && st !== 'clearing') {
+      if ((e.code === 'Enter' || e.code === 'Space') && !(e.target && e.target.closest && e.target.closest('button'))) {
+        e.preventDefault();
+        if (st === 'ready') begin(); else if (st === 'pause') resume(); else if (st === 'over') restart();
+        else if (st === 'clear') { if (stageIdx < LIST.length - 1) { stageIdx++; newGame(); } else restart(); }
+        return;
+      }
+    }
+    if (e.code === 'KeyP' || e.code === 'Escape') { e.preventDefault(); if (st === 'play') pause(); else if (st === 'pause') resume(); return; }
+    if (e.code === 'KeyR') { e.preventDefault(); if (st !== 'ready') restart(); return; }
+    var a = KEYMAP[e.code];
+    if (a) { e.preventDefault(); if (!e.repeat) press(a); }
+  });
+  window.addEventListener('keyup', function (e) { var a = KEYMAP[e.code]; if (a) release(a); });
+  window.addEventListener('blur', function () { pause(); });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) pause();
+    /* silence the page, music included, while the tab or app is in the background */
+    if (AC) { try { if (document.hidden) AC.suspend(); else if (soundOn) AC.resume(); } catch (e) {} }
+  });
+
+  var pad = $('#pad');
+  pad.addEventListener('pointerdown', function (e) {
+    var b = e.target.closest('.pb'); if (!b) return;
+    e.preventDefault(); b.classList.add('on');
+    try { b.setPointerCapture(e.pointerId); } catch (x) {}
+    press(b.dataset.k);
+  });
+  function padUp(e) { var b = e.target.closest('.pb'); if (!b) return; b.classList.remove('on'); release(b.dataset.k); }
+  pad.addEventListener('pointerup', padUp);
+  pad.addEventListener('pointercancel', padUp);
+  pad.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+  /* touch gestures on the board: drag sideways to move, tap to rotate, flick down to hard drop */
+  var bwrap = $('#boardwrap'), gest = null;
+  bwrap.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'mouse' || !G || G.state !== 'play') return;
+    if (e.target.closest('.overlay')) return;
+    gest = { id: e.pointerId, x0: e.clientX, y0: e.clientY, ax: e.clientX, t0: Date.now(), moved: false };
+    try { bwrap.setPointerCapture(e.pointerId); } catch (x) {}
+  });
+  bwrap.addEventListener('pointermove', function (e) {
+    if (!gest || e.pointerId !== gest.id || !G || G.state !== 'play') return;
+    var n = Math.trunc((e.clientX - gest.ax) / cell);
+    if (n) {
+      var dir = n > 0 ? 1 : -1;
+      for (var i = 0; i < Math.abs(n); i++) tryMove(dir);
+      gest.ax += n * cell; gest.moved = true;
+    }
+  });
+  function gestEnd(e) {
+    if (!gest || e.pointerId !== gest.id) return;
+    var g = gest; gest = null;
+    if (e.type === 'pointercancel' || !G || G.state !== 'play') return;
+    var dx = e.clientX - g.x0, dy = e.clientY - g.y0, dt = Date.now() - g.t0;
+    if (!g.moved && Math.abs(dx) < 12 && Math.abs(dy) < 12 && dt < 350) press('rotR');
+    else if (dy > cell * 3 && dy > Math.abs(dx) * 1.5 && dt < 400) press('drop');
+  }
+  bwrap.addEventListener('pointerup', gestEnd);
+  bwrap.addEventListener('pointercancel', gestEnd);
+  bwrap.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+  play.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-top]'); if (!t) return;
+    if (t.dataset.top === 'sound') toggleSound();
+    else if (t.dataset.top === 'menu') toMenu();
+    else if (t.dataset.top === 'undo') undo();
+    else if (t.dataset.top === 'hint') hint();
+    else if (t.dataset.top === 'pause') { if (G.state === 'play') pause(); else if (G.state === 'pause') resume(); }
+  });
+
+  /* ---------- overlay ---------- */
+  function fmtTime(ms) { var s = Math.floor(ms / 1000), m = Math.floor(s / 60); return m + ':' + String(s % 60).padStart(2, '0'); }
+  function fmtTimeP(ms) {
+    var t = Math.floor(ms / 10), cs = t % 100, s = Math.floor(t / 100), m = Math.floor(s / 60);
+    return m + ':' + String(s % 60).padStart(2, '0') + '.' + String(cs).padStart(2, '0');
+  }
+  function showOverlay(kind) {
+    clearHint();
+    var s = LIST[stageIdx], h = '';
+    if (kind === 'ready') {
+      h = '<h2>' + s.name + '</h2><p>' + s.rule + '</p><div class="btns">' +
+        '<button class="btn primary" type="button" data-act="start">スタート</button>' +
+        '<button class="btn" type="button" data-act="menu">ステージ選択へ</button></div>';
+    } else if (kind === 'pause') {
+      h = '<h2>一時停止</h2><div class="btns">' +
+        '<button class="btn primary" type="button" data-act="resume">つづける</button>' +
+        '<button class="btn" type="button" data-act="restart">最初からやり直す</button>' +
+        '<button class="btn" type="button" data-act="menu">ステージ選択へ</button></div>';
+    } else if (kind === 'over') {
+      var overBtns = '<div class="btns">' +
+        '<button class="btn primary" type="button" data-act="restart">もう一度</button>' +
+        '<button class="btn" type="button" data-act="menu">ステージ選択へ</button></div>';
+      if (G.endless) {
+        h = '<h2>ゲームオーバー</h2><p>スコア</p><p class="timebig">' + G.score.toLocaleString('ja-JP') + '</p>' +
+          (G.newBest ? (G.prevScore ? '<p class="newbest">自己ベスト更新</p>' : '') : '<p>ベスト ' + G.prevScore.toLocaleString('ja-JP') + '</p>') +
+          '<dl class="results"><dt>ライン</dt><dd>' + G.lines + '</dd><dt>レベル</dt><dd>' + G.level + '</dd><dt>タイム</dt><dd>' + fmtTime(G.time) + '</dd></dl>' + overBtns;
+      } else if (G.puz) {
+        h = '<h2>失敗</h2><p>' + (G.pieces >= G.limit ? 'ミノを使い切りました。' : 'ミノが置けなくなりました。') + '<br>のこり ' + G.remain + ' ブロック</p><div class="btns">' +
+          (G.hist.length ? '<button class="btn primary" type="button" data-act="undo">一手戻す</button>' : '') +
+          '<button class="btn' + (G.hist.length ? '' : ' primary') + '" type="button" data-act="restart">最初からやり直す</button>' +
+          '<button class="btn" type="button" data-act="menu">ステージ選択へ</button></div>';
+      } else {
+        h = '<h2>ゲームオーバー</h2><p>のこり ' + G.remain + ' ブロックでした。</p>' + overBtns;
+      }
+    } else if (kind === 'clear') {
+      var last = stageIdx >= LIST.length - 1;
+      if (mode === 'pcode') {
+        var pp = LIST[stageIdx];
+        h = pp.rec
+          ? '<h2>クリア！</h2><p>ミノ ' + G.pieces + ' 個 / ' + G.limit + ' で解けました。</p><p>このパズルの★3は「' + G.pieces + ' 個以内」になります。「パズルエディタへ戻る」を押すと、コードが出ています。</p>'
+          : '<h2>クリア</h2><p class="timebig stars">' + starsHtml(G.stars) + '</p><p>ミノ ' + G.pieces + ' 個 / ' + G.limit + (G.stars < 3 ? ' ・ ★3は ' + pp.best + ' 個以内' : '') + '</p>';
+        h += '<div class="btns"><button class="btn primary" type="button" data-act="menu">パズルエディタへ戻る</button>' +
+          '<button class="btn" type="button" data-act="restart">もう一度</button></div>';
+      } else if (mode === 'editor') {
+        h = '<h2>クリア！</h2><p class="timebig">' + fmtTimeP(G.time) + '</p>' +
+          '<dl class="results"><dt>使ったブロック</dt><dd>' + G.pieces + '</dd></dl>' +
+          '<div class="btns"><button class="btn primary" type="button" data-act="restart">もう一度</button>' +
+          '<button class="btn" type="button" data-act="menu">エディタへ戻る</button></div>';
+      } else if (G.puz) {
+        h = '<h2>' + (last ? 'パズル全クリア' : 'クリア') + '</h2>' +
+          '<p class="timebig stars">' + starsHtml(G.stars) + '</p>' +
+          (G.newBest && G.prevStars ? '<p class="newbest">星が増えました</p>' : '') +
+          '<p>ミノ ' + G.pieces + ' 個 / ' + G.limit + (G.stars < 3 ? ' ・ ★3は ' + s.best + ' 個以内' : '') + '</p>' +
+          '<div class="btns">' +
+          (last ? '' : '<button class="btn primary" type="button" data-act="next">次のパズル</button>') +
+          '<button class="btn' + (last ? ' primary' : '') + '" type="button" data-act="restart">もう一度</button>' +
+          '<button class="btn" type="button" data-act="menu">ステージ選択へ</button></div>';
+      } else
+      h = '<h2>' + (last ? (mode === 'extra' ? 'エクストラ全クリア' : 'メインモード全クリア') : 'ステージクリア') + '</h2>' +
+        '<p class="timebig">' + fmtTimeP(G.time) + '</p>' +
+        (G.newBest ? (G.prevBest ? '<p class="newbest">自己ベスト更新</p>' : '') : '<p>ベスト ' + fmtTimeP(G.prevBest) + '</p>') +
+        '<dl class="results"><dt>使ったブロック</dt><dd>' + G.pieces + '</dd><dt>ライン</dt><dd>' + G.lines + '</dd></dl>' +
+        '<div class="btns">' +
+        (last ? '' : '<button class="btn primary" type="button" data-act="next">次のステージ</button>') +
+        '<button class="btn' + (last ? ' primary' : '') + '" type="button" data-act="restart">もう一度</button>' +
+        '<button class="btn" type="button" data-act="menu">ステージ選択へ</button></div>';
+    }
+    overlay.innerHTML = '<div class="ocard">' + h + '</div>';
+    if (mode === 'editor' || mode === 'pcode') overlay.querySelectorAll('[data-act=menu]').forEach(function (b) { b.textContent = mode === 'pcode' ? 'パズルエディタへ戻る' : 'エディタへ戻る'; });
+    overlay.hidden = false;
+    var pb = overlay.querySelector('.primary');
+    if (pb) { try { pb.focus({ preventScroll: true }); } catch (x) {} }
+  }
+  function hideOverlay() { overlay.hidden = true; overlay.innerHTML = ''; }
+  overlay.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-act]'); if (!b) return;
+    var a = b.dataset.act;
+    if (a === 'start') begin();
+    else if (a === 'resume') resume();
+    else if (a === 'restart') restart();
+    else if (a === 'undo') undo();
+    else if (a === 'next') { stageIdx = Math.min(stageIdx + 1, LIST.length - 1); newGame(); }
+    else if (a === 'menu') toMenu();
+  });
+
+  /* ---------- render ---------- */
+  var el = { remain: $('#remain'), total: $('#total'), bar: $('#bar'), time: $('#time'), lines: $('#lines'), level: $('#level'),
+    remLbl: $('#remLbl'), remOf: $('#remOf'), barWrap: $('#barWrap') };
+  var hudKey = '';
+  function hud() {
+    var k = G.remain + '|' + G.score + '|' + Math.floor(G.time / 1000) + '|' + G.lines + '|' + G.level + '|' + G.total + '|' + G.pieces;
+    if (k === hudKey) return; hudKey = k;
+    if (G.endless) {
+      el.remLbl.textContent = 'スコア'; el.remain.textContent = G.score.toLocaleString('ja-JP');
+      el.remOf.hidden = true; el.barWrap.hidden = true;
+    } else {
+      el.remLbl.textContent = 'のこり'; el.remain.textContent = G.remain; el.total.textContent = G.total;
+      el.remOf.hidden = false; el.barWrap.hidden = false;
+      el.bar.style.width = ((G.total - G.remain) / G.total * 100) + '%';
+    }
+    el.time.textContent = fmtTime(G.time);
+    el.lines.textContent = G.puz ? G.pieces + '/' + G.limit : G.lines; el.level.textContent = G.level;
+  }
+  function drawSeq() {
+    var sb = $('#seqbar'), h = '', drawn = G.puz ? G.seq.length - G.queue.length : 0;
+    if (G.puz) G.seq.forEach(function (k, i) {
+      h += '<i class="' + (i < drawn - 1 ? 'done' : (i === drawn - 1 ? 'cur' : '')) + '" style="background:' + COLORS[k] + '">' + k + '</i>';
+    });
+    sb.innerHTML = h;
+  }
+  function drawSide() {
+    drawSeq();
+    var w = 4 * cell2, h = 2 * cell2;
+    hctx.clearRect(0, 0, w, h);
+    if (G.hold) drawPieceIn(hctx, G.hold, w, h, cell2, G.canHold ? 1 : 0.35);
+    for (var i = 0; i < 3; i++) { nctx[i].clearRect(0, 0, w, h); if (G.queue[i]) drawPieceIn(nctx[i], G.queue[i], w, h, cell2, 1); }
+  }
+  function render() {
+    var s = cell, ctx = bctx, x, y;
+    ctx.fillStyle = '#0a0b11'; ctx.fillRect(0, 0, COLS * s, VIS * s);
+    ctx.strokeStyle = 'rgba(255,255,255,.05)'; ctx.lineWidth = 1; ctx.beginPath();
+    for (x = 1; x < COLS; x++) { ctx.moveTo(x * s + .5, 0); ctx.lineTo(x * s + .5, VIS * s); }
+    for (y = 1; y < VIS; y++) { ctx.moveTo(0, y * s + .5); ctx.lineTo(COLS * s, y * s + .5); }
+    ctx.stroke();
+    for (y = HID; y < ROWS; y++) for (x = 0; x < COLS; x++) {
+      var c = G.grid[y][x]; if (c) drawBlock(ctx, x * s, (y - HID) * s, s, COLORS[c.k], c.i);
+    }
+    if (G.hint && G.state === 'play') {
+      ctx.fillStyle = 'rgba(255,240,0,.26)'; ctx.strokeStyle = '#fff000'; ctx.lineWidth = 2;
+      G.hint.cells.forEach(function (c) { if (c[1] >= HID) { ctx.fillRect(c[0] * s + 1, (c[1] - HID) * s + 1, s - 2, s - 2); ctx.strokeRect(c[0] * s + 2, (c[1] - HID) * s + 2, s - 4, s - 4); } });
+    }
+    var p = G.p;
+    if (p && G.state === 'play') {
+      var gy = p.y; while (!collide(p.k, p.r, p.x, gy + 1)) gy++;
+      var cs = ROT[p.k][p.r], i;
+      ctx.strokeStyle = COLORS[p.k]; ctx.lineWidth = 2; ctx.globalAlpha = .5;
+      if (CFG.ghost) for (i = 0; i < 4; i++) { var yy = gy + cs[i][1]; if (yy >= HID) ctx.strokeRect(( p.x + cs[i][0]) * s + 1, (yy - HID) * s + 1, s - 2, s - 2); }
+      ctx.globalAlpha = 1;
+      for (i = 0; i < 4; i++) { var py = p.y + cs[i][1]; if (py >= HID) drawBlock(ctx, (p.x + cs[i][0]) * s, (py - HID) * s, s, COLORS[p.k], false); }
+    }
+    if (G.state === 'clearing') {
+      ctx.fillStyle = 'rgba(255,255,255,' + (0.9 * (1 - G.clearT / CLEAR_MS)).toFixed(3) + ')';
+      G.clearRows.forEach(function (row) { if (row >= HID) ctx.fillRect(0, (row - HID) * s, COLS * s, s); });
+    }
+  }
+
+  var last = 0;
+  function frame(t) {
+    var dt = Math.min(64, (t - last) || 16); last = t;
+    if (G && !play.hidden && bctx && !play.classList.contains('land')) {
+      if (G.state === 'play') update(dt);
+      else if (G.state === 'clearing') { G.clearT += dt; if (G.clearT >= CLEAR_MS) finishClear(); }
+      if (G) {
+        render(); hud();
+        if (G.sideDirty) { drawSide(); G.sideDirty = false; }
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  window.addEventListener('resize', function () { if (!play.hidden) layout(); });
+  window.addEventListener('orientationchange', function () { setTimeout(function () { if (!play.hidden) layout(); }, 200); });
+  if (window.visualViewport) window.visualViewport.addEventListener('resize', function () { if (!play.hidden) layout(); });
+  requestAnimationFrame(frame);
+
+  if (window.__nanaTest) {
+    window.__nanaTest({
+      STAGES: STAGES, EXTRA: EXTRA, NORMAL: NORMAL, PUZZLES: PUZZLES, undo: undo, edEncode: edEncode, edDecode: edDecode, ed: ed, hint: hint, expectedMove: expectedMove, bkMake: bkMake, bkParse: bkParse, bkApply: bkApply, pcEncode: pcEncode, pcDecode: pcDecode, pcVerify: pcVerify, pcBuild: pcBuild, pedCleared: pedCleared, getPedLast: function () { return pedLast; }, setCust: function (a) { CUSTOMP = a; }, setList: function (m) { mode = m; LIST = listFor(m); }, COLS: COLS, ROWS: ROWS, HID: HID, ROT: ROT, KINDS: KINDS,
+      setStage: function (i) { stageIdx = i; }, newGame: newGame, begin: begin, spawn: spawn, lock: lock, finishClear: finishClear,
+      hardDrop: hardDrop, rotate: rotate, tryMove: tryMove, collide: collide, countInit: countInit, update: update,
+      get G() { return G; }
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>カタチパズル</title>
 <meta name="description" content="最初から置かれた「点つきブロック」を、全部消せばクリア。ブラウザで遊べる落ちものパズル。メイン15ステージ、少ない手数を狙うパズル、ステージとパズルを作ってコードで共有できるエディタ付き。">
+<meta name="theme-color" content="#0c0d13">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="カタチパズル">
 <meta property="og:title" content="カタチパズル｜点つきブロックを全部消す落ちものパズル">
@@ -18,7 +19,9 @@
 <meta name="twitter:title" content="カタチパズル｜点つきブロックを全部消す落ちものパズル">
 <meta name="twitter:description" content="最初から置かれた「点つきブロック」を、全部消せばクリア。ブラウザで遊べる落ちものパズル。メイン15ステージ、少ない手数を狙うパズル、ステージとパズルを作ってコードで共有できるエディタ付き。">
 <meta name="twitter:image" content="https://kuro516.github.io/cat16/ogp.png">
+<link rel="canonical" href="https://kuro516.github.io/cat16/">
 <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0wLjUgLTEgOCAxMCI+PHJlY3QgeD0iLTAuNSIgeT0iLTEiIHdpZHRoPSI4IiBoZWlnaHQ9IjEwIiByeD0iMSIgZmlsbD0iIzBjMGQxMyIvPjxyZWN0IHg9IjIiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSI2IiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iMiIgeT0iMSIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjMiIHk9IjEiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSI0IiB5PSIxIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iNSIgeT0iMSIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjYiIHk9IjEiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iNCIgeT0iMiIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjYiIHk9IjIiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSIyIiB5PSIzIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iMyIgeT0iMyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjQiIHk9IjMiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSI1IiB5PSIzIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iNiIgeT0iMyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjAiIHk9IjQiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSIzIiB5PSI0IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZTcyNzFlIi8+PHJlY3QgeD0iNCIgeT0iNCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2U3MjcxZSIvPjxyZWN0IHg9IjUiIHk9IjQiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNlNzI3MWUiLz48cmVjdCB4PSIwIiB5PSI1IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iMSIgeT0iNSIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjIiIHk9IjUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSIzIiB5PSI1IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iNCIgeT0iNSIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZjAwMCIvPjxyZWN0IHg9IjUiIHk9IjUiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSI2IiB5PSI1IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iMSIgeT0iNiIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjIiIHk9IjYiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSIzIiB5PSI2IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iNCIgeT0iNiIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjUiIHk9IjYiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSI2IiB5PSI2IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PHJlY3QgeD0iMSIgeT0iNyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI2ZmZmFmMCIvPjxyZWN0IHg9IjMiIHk9IjciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZhZjAiLz48cmVjdCB4PSI1IiB5PSI3IiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjZmZmYWYwIi8+PC9zdmc+">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>[hidden]{display:none!important}html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -292,6 +295,7 @@
 </style>
 </head>
 <body>
+<noscript><p style="font:16px/1.7 sans-serif;color:#f4eee1;background:#0c0d13;padding:24px;margin:0">カタチパズルを遊ぶには、JavaScript を有効にしてください。</p></noscript>
 
 <div id="app">
   <section id="menu" aria-label="メニュー">
@@ -688,7 +692,7 @@
   var ORDER = ['slit', 'valley', 'pyramid', 'square', 'twin', 'stair', 'donut', 'mosaic', 'diamond', 'crown', 'house', 'cross', 'tree', 'ladder', 'cat'];
   STAGES = ORDER.map(function (id) { return STAGES.filter(function (s) { return s.id === id; })[0]; });
 
-  /* Extra mode: letters A-Z drawn with a 5x7 pixel font, bottom aligned, starting speed rises with the letter */
+  /* Extra mode: letters A-Z drawn with a 5x7 pixel font, bottom aligned; the fall speed is the same for every letter */
   var GLYPHS = {
     A: ['.###.', '#...#', '#...#', '#####', '#...#', '#...#', '#...#'],
     B: ['####.', '#...#', '#...#', '####.', '#...#', '#...#', '####.'],
@@ -1340,7 +1344,28 @@
     return { rows: rows, seq: seq, moves: moves };
   }
   /* replay the stored placements on a fresh board: legal, and every starting block gets cleared */
-  function pcVerify(rows, moves) {
+  /* can these placements (kinds, in order) really be made from the fixed queue, using hold at most once per piece? */
+  function pcOrderOk(seq, kinds) {
+    var n = seq.length, seen = {};
+    function go(i, c, h, qi) {
+      if (i === kinds.length) return true;
+      var key = i + c + (h || '-') + qi; if (seen[key]) return false; seen[key] = 1;
+      var k = kinds[i], last = i === kinds.length - 1, nc, nq;
+      function after(cur, hold, q) {
+        if (cur !== k) return false;
+        if (last) return true;
+        if (q >= n) return false;                 /* no piece left to come next */
+        return go(i + 1, seq[q], hold, q + 1);
+      }
+      if (after(c, h, qi)) return true;
+      if (h) return after(h, c, qi);              /* swap with the held piece */
+      if (qi < n) return after(seq[qi], c, qi + 1); /* hold, draw the next one */
+      return false;
+    }
+    return n > 0 && go(0, seq[0], null, 1);
+  }
+  function pcVerify(rows, moves, seq) {
+    if (seq != null && !pcOrderOk(seq, moves.map(function (m) { return m[0]; }))) return false;
     var g = [], y, i;
     for (y = 0; y < ROWS; y++) g.push(new Array(COLS).fill(0));
     rows.forEach(function (r, yy) { r.forEach(function (v, c) { if (v) g[ROWS - 1 - yy][c] = 2; }); });
@@ -1460,7 +1485,7 @@
   (function pcLoad() {
     try {
       var a = JSON.parse(localStorage.getItem(PC_KEY) || '[]');
-      if (Array.isArray(a)) pcol = a.filter(function (x) { var d = x && typeof x.code === 'string' && pcDecode(x.code); return d && pcVerify(d.rows, d.moves); })
+      if (Array.isArray(a)) pcol = a.filter(function (x) { var d = x && typeof x.code === 'string' && pcDecode(x.code); return d && pcVerify(d.rows, d.moves, d.seq); })
         .map(function (x) { return { id: String(x.id), name: String(x.name || '').slice(0, 20), code: x.code }; });
     } catch (e) { pcol = []; }
   })();
@@ -1470,7 +1495,7 @@
   function pcAdd(code, name) {
     var d = pcDecode(code);
     if (!d) return 'このコードは読み込めません。コードを確かめてください';
-    if (!pcVerify(d.rows, d.moves)) return 'このコードの手順では、パズルを解けません';
+    if (!pcVerify(d.rows, d.moves, d.seq)) return 'このコードの手順では、パズルを解けません';
     var canon = pcEncode(d.rows, d.seq, d.moves);
     if (pcol.some(function (x) { return x.code === canon; })) return 'このパズルはもう追加されています';
     if (pcol.length >= PC_MAX) return '保存できるのは' + PC_MAX + '個までです。いらないものを削除してください';
@@ -1481,7 +1506,7 @@
     var d = pcDecode(code);
     if (!d) { pcSay('このコードは読み込めません。コードを確かめてください'); return; }
     for (var y = 0; y < d.rows.length; y++) if (d.rows[y].every(Boolean)) { pcSay('このコードは、ぜんぶ埋まった行があるので遊べません'); return; }
-    if (!pcVerify(d.rows, d.moves)) { pcSay('このコードの手順では、パズルを解けません'); return; }
+    if (!pcVerify(d.rows, d.moves, d.seq)) { pcSay('このコードの手順では、パズルを解けません'); return; }
     var full = []; for (y = 0; y < ED_ROWS; y++) full.push(d.rows[y] || new Array(COLS).fill(0));
     d.rows = full;
     CUSTOMP.length = 0; CUSTOMP.push(pcBuild(d, name || 'もらったパズル', false));
@@ -1558,7 +1583,7 @@
   function bkApply(o, over) {
     var sv = over ? (o.save && typeof o.save === 'object' ? o.save : {}) : bkMergeSave(bkRead(SAVE_KEY, {}), o.save && typeof o.save === 'object' ? o.save : {});
     var c = bkMergeList(bkRead(COL_KEY, []), o.col, function (cd) { return !!edDecode(cd); }, COL_MAX, over);
-    var p = bkMergeList(bkRead(PC_KEY, []), o.pcol, function (cd) { var d = pcDecode(cd); return !!d && pcVerify(d.rows, d.moves); }, PC_MAX, over);
+    var p = bkMergeList(bkRead(PC_KEY, []), o.pcol, function (cd) { var d = pcDecode(cd); return !!d && pcVerify(d.rows, d.moves, d.seq); }, PC_MAX, over);
     localStorage.setItem(SAVE_KEY, JSON.stringify(sv));
     localStorage.setItem(COL_KEY, JSON.stringify(c.list));
     localStorage.setItem(PC_KEY, JSON.stringify(p.list));
@@ -2195,7 +2220,7 @@
 
   if (window.__nanaTest) {
     window.__nanaTest({
-      STAGES: STAGES, EXTRA: EXTRA, NORMAL: NORMAL, PUZZLES: PUZZLES, undo: undo, edEncode: edEncode, edDecode: edDecode, ed: ed, hint: hint, expectedMove: expectedMove, bkMake: bkMake, bkParse: bkParse, bkApply: bkApply, pcEncode: pcEncode, pcDecode: pcDecode, pcVerify: pcVerify, pcBuild: pcBuild, pedCleared: pedCleared, getPedLast: function () { return pedLast; }, setCust: function (a) { CUSTOMP = a; }, setList: function (m) { mode = m; LIST = listFor(m); }, COLS: COLS, ROWS: ROWS, HID: HID, ROT: ROT, KINDS: KINDS,
+      STAGES: STAGES, EXTRA: EXTRA, NORMAL: NORMAL, PUZZLES: PUZZLES, undo: undo, edEncode: edEncode, edDecode: edDecode, ed: ed, hint: hint, expectedMove: expectedMove, bkMake: bkMake, bkParse: bkParse, bkApply: bkApply, pcEncode: pcEncode, pcDecode: pcDecode, pcVerify: pcVerify, pcOrderOk: pcOrderOk, pcBuild: pcBuild, pedCleared: pedCleared, getPedLast: function () { return pedLast; }, setCust: function (a) { CUSTOMP = a; }, setList: function (m) { mode = m; LIST = listFor(m); }, COLS: COLS, ROWS: ROWS, HID: HID, ROT: ROT, KINDS: KINDS,
       setStage: function (i) { stageIdx = i; }, newGame: newGame, begin: begin, spawn: spawn, lock: lock, finishClear: finishClear,
       hardDrop: hardDrop, rotate: rotate, tryMove: tryMove, collide: collide, countInit: countInit, update: update,
       get G() { return G; }

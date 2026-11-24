@@ -145,6 +145,7 @@
 
   .view { display: grid; gap: 22px; align-content: start; }
   .viewbar { display: flex; align-items: center; gap: 14px; }
+  .viewfoot { display: flex; margin-top: 22px; }
   .viewbar h2 { font-family: var(--font-display); font-weight: 400; font-size: 22px; line-height: 1.2; }
   .howto h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 18px; }
   .howto .note { color: var(--muted); font-size: 13px; margin: 0; }
@@ -428,6 +429,7 @@
         </div>
         <ul class="letters" id="letterList"></ul>
       </div>
+      <div class="viewfoot"><button class="btn sm" type="button" data-nav="top">‹ トップ</button></div>
     </div>
 
     <div id="vSet" class="view" hidden>
@@ -475,6 +477,7 @@
         <span id="bkMsg" class="edinfo" role="status"></span>
       </section>
       <button class="btn sm" type="button" id="setReset">せっていをもとに戻す</button>
+      <div class="viewfoot"><button class="btn sm" type="button" data-nav="top">‹ トップ</button></div>
     </div>
 
     <div id="vHow" class="view" hidden>
@@ -499,6 +502,7 @@
         </dl>
         <p class="note">スマートフォンでは、プレイ画面の下のボタンで操作します。盤面を左右にドラッグして移動、タップして回転、下へはじいて落下もできます。縦向きでお使いください。</p>
       </section>
+      <div class="viewfoot"><button class="btn sm" type="button" data-nav="top">‹ トップ</button></div>
     </div>
   </section>
 
